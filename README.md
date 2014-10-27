@@ -1,4 +1,7 @@
-config.java
+config.java project
 ===========
 
-Base configuration for Java Projects
+This is some maven configuration, which can simplify creating of Java projects.
+It contains base settings for most popular plugins and dependecies.
+
+You can use this artifact ru.anr:config.java as maven parent for own projects.

@@ -5,7 +5,7 @@
     <artifactId>config.java</artifactId>
     <packaging>pom</packaging>
     <name>Base Java configuration and dependencies</name>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.9-SNAPSHOT</version>
 
     <url />
     <prerequisites>
@@ -24,21 +24,6 @@
         <url>https://github.com/anr-ru/config.java/</url>
         <tag>HEAD</tag>
     </scm>
-
-    <distributionManagement>
-        <repository>
-            <id>libs-releases-local</id>
-            <name>libs-releases-local</name>
-	    	<!-- TODO: -->
-            <url></url>
-        </repository>
-        <snapshotRepository>
-            <id>libs-snapshots-local</id>
-            <name>libs-snapshots-local</name>
-	    	<!-- TODO: -->
-            <url></url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <developers>
         <developer>
@@ -61,14 +46,17 @@
         <defaultGoal>install</defaultGoal>
         <plugins>
             <plugin>
+                <!-- For unit tests -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
             </plugin>
             <plugin>
+                <!-- For integration tests -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
             </plugin>
             <plugin>
+                <!-- Used to build dependencies of project -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
@@ -96,6 +84,7 @@
                 </executions>
             </plugin>
             <plugin>
+                <!-- Getting environment details -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-help-plugin</artifactId>
                 <version>${maven-help-plugin.version}</version>
@@ -123,6 +112,7 @@
                 </executions>
             </plugin>
             <plugin>
+                <!-- Code coverage preparation  -->
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <executions>
@@ -149,6 +139,7 @@
                 </executions>
             </plugin>
         </plugins>
+        <!-- General resource processing -->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -215,7 +206,7 @@
             </testResource>
         </testResources>
 
-        <!-- Plugin management (Plugin configuration details) -->
+        <!-- Plugin management (Plugin configuration details and versions) -->
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -817,6 +808,7 @@
             <groupId>org.codehaus.sonar-plugins.java</groupId>
             <artifactId>sonar-jacoco-listeners</artifactId>
         </dependency>
+
     </dependencies>
 
     <!-- Use dependency management to reduce verbosity in projects -->
@@ -1045,17 +1037,6 @@
                 <groupId>org.springframework.social</groupId>
                 <artifactId>spring-social-core</artifactId>
                 <version>${spring.social.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>${httpclient.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>commons-logging</artifactId>
-                        <groupId>commons-logging</groupId>
-                    </exclusion>
-                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.springframework.social</groupId>
@@ -1381,6 +1362,18 @@
                 <artifactId>spring-ws-security</artifactId>
                 <version>${spring-ws.version}</version>
             </dependency>
+            <!-- Apache Http Transport -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
             <!-- Tapestry. Sorry, we're Tapestry funs-->
             <dependency>
                 <groupId>org.apache.tapestry</groupId>
@@ -1522,9 +1515,9 @@
                             </items>
                             <doCheck>false</doCheck>
                             <doUpdate>false</doUpdate>
-                            <!--revisionOnScmFailure>no-scm</revisionOnScmFailure>
+                            <revisionOnScmFailure>no-scm</revisionOnScmFailure>
                             <shortRevisionLength>6</shortRevisionLength>
-                            <getRevisionOnlyOnce>true</getRevisionOnlyOnce-->
+                            <getRevisionOnlyOnce>true</getRevisionOnlyOnce>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -1607,7 +1600,7 @@
     <!-- Properties -->
     <properties>
 
-        <code.conventions.version>1.0</code.conventions.version>
+        <code.conventions.version>1.0-SNAPSHOT</code.conventions.version>
 
         <!-- Library versions -->
         <slf4j.version>1.7.7</slf4j.version>
