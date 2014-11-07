@@ -1030,6 +1030,17 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
                 <artifactId>spring-beans</artifactId>
                 <version>${spring.version}</version>
                 <exclusions>
@@ -1185,6 +1196,31 @@
                 <artifactId>spring-aspects</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+	        <dependency>
+	            <groupId>com.fasterxml.jackson.core</groupId>
+	            <artifactId>jackson-core</artifactId>
+	            <version>${jackson.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>com.fasterxml.jackson.core</groupId>
+	            <artifactId>jackson-databind</artifactId>
+	            <version>${jackson.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>com.fasterxml.jackson.module</groupId>
+	            <artifactId>jackson-module-jaxb-annotations</artifactId>
+	            <version>${jackson.version}</version>
+	        </dependency>
+	        <dependency>
+	          <groupId>com.fasterxml.jackson.dataformat</groupId>
+	          <artifactId>jackson-dataformat-xml</artifactId>
+	          <version>${jackson.version}</version>
+	        </dependency>        
+	        <dependency>
+	            <groupId>org.codehaus.woodstox</groupId>
+	            <artifactId>woodstox-core-asl</artifactId>
+	            <version>${woodstox.version}</version>
+	        </dependency>
             
             
             <!-- SPRING Security -->
@@ -1889,7 +1925,8 @@
         <spring-security-oauth2.version>2.0.3.RELEASE</spring-security-oauth2.version>
         <spring.shell.version>1.1.0.RELEASE</spring.shell.version>
         <selenium.version>2.43.1</selenium.version>
-
+        <jackson.version>2.4.3</jackson.version>
+        <woodstox.version>4.4.1</woodstox.version>
 
         <maven-pmd-plugin.version>3.2</maven-pmd-plugin.version>
         <maven-javadoc-plugin.version>2.10.1</maven-javadoc-plugin.version>
