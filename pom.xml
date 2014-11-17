@@ -181,7 +181,7 @@
                 <directory>src/test/resources</directory>
                 <filtering>false</filtering>
                 <includes>
-                    <include>**/applicationContext*.xml</include>
+                    <include>**/*-context.xml</include>
                     <include>**/*.bin</include>
                 </includes>
             </testResource>
@@ -192,7 +192,7 @@
                     <include>**/*</include>
                 </includes>
                 <excludes>
-                    <exclude>**/applicationContext*.xml</exclude>
+                    <exclude>**/*-context.xml</exclude>
                     <exclude>**/*.bin</exclude>
                 </excludes>
             </testResource>
@@ -767,6 +767,19 @@
                                 	<action>
                                 		<ignore></ignore>
                                 	</action>
+                                </pluginExecution>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.codehaus.mojo</groupId>
+                                        <artifactId>properties-maven-plugin</artifactId>
+                                        <versionRange>[1.0.1,)</versionRange>
+                                        <goals>
+                                            <goal>initialize</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
                                 </pluginExecution>
                             </pluginExecutions>
                         </lifecycleMappingMetadata>
@@ -1548,6 +1561,11 @@
                 <version>${jms.version}</version>
             </dependency>
             <dependency>
+                <groupId>javax.ejb</groupId>
+                <artifactId>javax.ejb-api</artifactId>
+                <version>${javax.ejb.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>javax</groupId>
                 <artifactId>javaee-api</artifactId>
                 <version>${javaee-api.version}</version>
@@ -1748,6 +1766,12 @@
                 <artifactId>postgresql</artifactId>
                 <version>${postgresql.version}</version>
             </dependency>
+            <dependency>  
+                <groupId>hsqldb</groupId>  
+                <artifactId>hsqldb</artifactId>  
+                <version>${hsqldb.version}</version>  
+                <scope>test</scope>
+            </dependency>
             
         </dependencies>
     </dependencyManagement>
@@ -1898,9 +1922,11 @@
 
         <jms.version>1.1</jms.version>
         <javax.mail.version>1.5.2</javax.mail.version>
-
+        <javax.ejb.version>3.2</javax.ejb.version>
         <dbunit.version>2.5.0</dbunit.version>
         <postgresql.version>9.3-1102-jdbc41</postgresql.version>
+        <hsqldb.version>1.8.0.10</hsqldb.version>        
+        
 
         <hibernate.version>4.3.6.Final</hibernate.version>
         <hibernate-tools.version>4.3.1.CR1</hibernate-tools.version>
@@ -1927,7 +1953,7 @@
         <spring.social.twitter.version>1.1.1.RELEASE</spring.social.twitter.version>
         <spring.social.linkedin.version>1.0.1.RELEASE</spring.social.linkedin.version>
         
-        <spring-security-oauth2.version>2.0.3.RELEASE</spring-security-oauth2.version>
+        <spring-security-oauth2.version>2.0.4.RELEASE</spring-security-oauth2.version>
         <spring.shell.version>1.1.0.RELEASE</spring.shell.version>
         <selenium.version>2.43.1</selenium.version>
         <jackson.version>2.4.3</jackson.version>
