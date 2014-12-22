@@ -231,6 +231,14 @@
                     <include>**/web.xml</include>
                 </includes>
             </testResource>
+            <testResource>
+                <directory>src/test/javascript/config</directory>
+                <targetPath>${basedir}/src/frontend/</targetPath>
+                <filtering>true</filtering>
+                <includes>
+                    <include>*.json</include>
+                </includes>
+            </testResource>
         </testResources>
 
         <!-- Plugin management (Plugin configuration details and versions) -->
@@ -808,6 +816,45 @@
                                         <ignore />
                                     </action>
                                 </pluginExecution>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>com.github.eirslett</groupId>
+                                        <artifactId>frontend-maven-plugin</artifactId>
+                                        <versionRange>[0.0.20,)</versionRange>
+                                        <goals>
+                                            <goal>bower</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>com.github.eirslett</groupId>
+                                        <artifactId>frontend-maven-plugin</artifactId>
+                                        <versionRange>[0.0.20,)</versionRange>
+                                        <goals>
+                                            <goal>grunt</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>com.github.eirslett</groupId>
+                                        <artifactId>frontend-maven-plugin</artifactId>
+                                        <versionRange>[0.0.20,)</versionRange>
+                                        <goals>
+                                            <goal>npm</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
                             </pluginExecutions>
                         </lifecycleMappingMetadata>
                     </configuration>                    
@@ -867,6 +914,67 @@
                         <contextReloadable>true</contextReloadable>
                     </configuration>
                 </plugin>                    
+                <plugin>
+                    <groupId>com.github.eirslett</groupId>
+                    <artifactId>frontend-maven-plugin</artifactId>
+                    <version>${frontend-maven-plugin}</version>
+                    <configuration>
+                        <workingDirectory>src/frontend</workingDirectory>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>install node and npm</id>
+                            <phase>generate-resources</phase>
+                            <goals>
+                                <goal>install-node-and-npm</goal>
+                            </goals>
+                            <configuration>
+                                <nodeVersion>${node.version}</nodeVersion>
+                                <npmVersion>${npm.version}</npmVersion>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>npm install</id>
+                            <phase>generate-resources</phase>
+                            <goals>
+                                <goal>npm</goal>
+                            </goals>
+                            <configuration>
+                                <arguments>install</arguments>
+                            </configuration>
+                        </execution>
+                        <!--execution>
+                            <id>bower install</id>
+                            <phase>generate-resources</phase>
+                            <goals>
+                                <goal>bower</goal>
+                            </goals>
+                            <configuration>
+                                <arguments>install</arguments>
+                            </configuration>
+                        </execution-->
+                        <execution>
+                            <id>grunt build</id>
+                            <phase>generate-resources</phase>
+                            <goals>
+                                <goal>grunt</goal>
+                            </goals>
+                            <configuration>
+                                <arguments>--verbose</arguments>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>javascript tests</id>
+                            <goals>
+                                <goal>karma</goal>
+                            </goals>
+                            <configuration>
+                                <karmaConfPath>karma.conf.js</karmaConfPath>
+                                <skipTests>${maven.test.skip}</skipTests>
+                            </configuration>
+                        </execution>
+                    </executions>                
+                </plugin>                
             </plugins>
         </pluginManagement>
     </build>
@@ -2072,6 +2180,11 @@
         <yuicompressor-maven-plugin.version>1.2</yuicompressor-maven-plugin.version>
         <hibernate4-maven-plugin>1.0.4</hibernate4-maven-plugin>
         <tomcat7-maven-plugin>2.2</tomcat7-maven-plugin>
+        <frontend-maven-plugin>0.0.20</frontend-maven-plugin>
+
+        <node.version>v0.10.30</node.version>
+        <npm.version>1.4.21</npm.version>
+
 
         <!-- Settings -->
         <JAVA_HOME>${env.JAVA_HOME}</JAVA_HOME>
