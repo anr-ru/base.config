@@ -557,9 +557,9 @@
                     <configuration>
                         <skip>${maven.jacoco.skip}</skip>
                         <dumpOnExit>true</dumpOnExit>
-                        <!--includes>
-                            <include>*.*</include>
-                        </includes-->
+                        <includes>
+                            <include>ru.anr.*</include>
+                        </includes>
                     </configuration>
                     <executions>
                         <!-- Prepares a variable, jacoco.agent.ut.arg, that
@@ -1025,9 +1025,9 @@
                 <version>${jacoco-maven-plugin.version}</version>
                 <configuration>
                     <skip>${maven.jacoco.skip}</skip>
-                    <!--includes>
-                        <include>*.*</include>
-                    </includes-->
+                    <includes>
+                        <include>ru.anr.*</include>
+                    </includes>
                 </configuration>
                 <reportSets>
                     <reportSet>
