@@ -126,33 +126,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <!-- Code coverage preparation  -->
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>jacoco-prepare-agent</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                        <configuration>
-                            <destFile>${project.build.directory}/jacoco.exec</destFile>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>jacoco-prepare-agent-integration</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>prepare-agent-integration</goal>
-                        </goals>
-                        <configuration>
-                            <destFile>${project.build.directory}/jacoco-it.exec</destFile>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
         <!-- General resource processing -->
         <resources>
@@ -411,7 +384,7 @@
                         <!--forkMode>perthread</forkMode>
                         <parallel>classes</parallel>
                         <threadCount>1</threadCount -->
-                        <argLine>-Xss1m -Xmx4g -XX:MaxPermSize=2g -Djava.awt.headless=true ${jacoco.agent.ut.arg}</argLine>
+                        <argLine>-Xss1m -Xmx4g -XX:MaxPermSize=2g -Djava.awt.headless=true</argLine>
                         <excludes>
                             <exclude>**\*IntegrationTest.java</exclude>
                         </excludes>
@@ -429,13 +402,7 @@
                         <!--forkMode>perthread</forkMode>
                         <parallel>classes</parallel>
                         <threadCount>1</threadCount -->
-                        <argLine>
-                            -Xss1m 
-                            -Xmx4g 
-                            -XX:MaxPermSize=2g 
-                            -Djava.awt.headless=true 
-                            ${jacoco.agent.it.arg} 
-                        </argLine>
+                        <argLine>-Xss1m -Xmx4g -XX:MaxPermSize=2g -Djava.awt.headless=true</argLine>
                         <includes>
                             <include>**\*IntegrationTest.java</include>
                         </includes>
@@ -543,48 +510,6 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
                     <version>${sonar-maven-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.jacoco</groupId>
-                    <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>${jacoco-maven-plugin.version}</version>
-                    <configuration>
-                        <skip>${maven.jacoco.skip}</skip>
-                        <dumpOnExit>true</dumpOnExit>
-                        <includes>
-                            <include>ru.anr.*</include>
-                        </includes>
-                    </configuration>
-                    <executions>
-                        <!-- Prepares a variable, jacoco.agent.ut.arg, that
-                            contains the info to be passed to the JVM hosting the code being tested. -->
-                        <execution>
-                            <id>prepare-ut-agent</id>
-                            <phase>process-test-classes</phase>
-                            <goals>
-                                <goal>prepare-agent</goal>
-                            </goals>
-                            <configuration>
-                                <destFile>${sonar.jacoco.reportPath}</destFile>
-                                <propertyName>jacoco.agent.ut.arg</propertyName>
-                                <append>true</append>
-                            </configuration>
-                        </execution>
-                        <!-- Prepares a variable, jacoco.agent.it.arg, that
-                            contains the info to be passed to the JVM hosting the code being tested. -->
-                        <execution>
-                            <id>prepare-it-agent</id>
-                            <phase>pre-integration-test</phase>
-                            <goals>
-                                <goal>prepare-agent</goal>
-                            </goals>
-                            <configuration>
-                                <destFile>${sonar.jacoco.itReportPath}</destFile>
-                                <propertyName>jacoco.agent.it.arg</propertyName>
-                                <append>true</append>
-                            </configuration>
-                        </execution>
-                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -782,23 +707,6 @@
                                         <ignore></ignore>
                                     </action>
                                 </pluginExecution>
-                                <!--pluginExecution>
-                                	<pluginExecutionFilter>
-                                		<groupId>org.jacoco</groupId>
-                                		<artifactId>
-                                			jacoco-maven-plugin
-                                		</artifactId>
-                                		<versionRange>
-                                			[0.7.2.201409121644,)
-                                		</versionRange>
-                                		<goals>
-                                			<goal>prepare-agent</goal>
-                                		</goals>
-                                	</pluginExecutionFilter>
-                                	<action>
-                                		<ignore></ignore>
-                                	</action>
-                                </pluginExecution-->
                                 <pluginExecution>
                                     <pluginExecutionFilter>
                                         <groupId>org.codehaus.mojo</groupId>
@@ -1014,25 +922,6 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco-maven-plugin.version}</version>
-                <configuration>
-                    <skip>${maven.jacoco.skip}</skip>
-                    <includes>
-                        <include>ru.anr.*</include>
-                    </includes>
-                </configuration>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>report</report>
-                            <report>report-integration</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven-javadoc-plugin.version}</version>
@@ -1173,12 +1062,6 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-        </dependency>
-
-        <!-- TEST SCOPE -->
-        <dependency>
-            <groupId>org.codehaus.sonar-plugins.java</groupId>
-            <artifactId>sonar-jacoco-listeners</artifactId>
         </dependency>
 
     </dependencies>
@@ -1978,10 +1861,6 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.jacoco</groupId>
-                        <artifactId>jacoco-maven-plugin</artifactId>
-                    </plugin>
-                    <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>buildnumber-maven-plugin</artifactId>
                         <version>${buildnumber-maven-plugin.version}</version>
@@ -2010,14 +1889,6 @@
         </profile>
         <profile>
             <id>ci</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.jacoco</groupId>
-                        <artifactId>jacoco-maven-plugin</artifactId>
-                    </plugin>
-                </plugins>
-            </build>
             <properties>
                 <buildNumber>${env.BUILD_NUMBER}</buildNumber>
             </properties>
@@ -2052,6 +1923,7 @@
                             <artifactId>maven-surefire-plugin</artifactId>
                             <version>${maven-surefire-plugin.version}</version>
                             <configuration>
+                                <argLine>-Xss1m -Xmx4g -XX:MaxPermSize=2g -Djava.awt.headless=true ${argLine}</argLine>
                                 <properties>
                                     <property>
                                         <name>listener</name>
@@ -2065,6 +1937,7 @@
                             <artifactId>maven-failsafe-plugin</artifactId>
                             <version>${maven-failsafe-plugin.version}</version>
                             <configuration>
+                                <argLine>-Xss1m -Xmx4g -XX:MaxPermSize=2g -Djava.awt.headless=true ${argLine}</argLine>
                                 <properties>
                                     <property>
                                         <name>listener</name>
@@ -2076,9 +1949,13 @@
                     </plugins>
                 </pluginManagement>
             </build>
-            <properties>
-                <maven.jacoco.skip>false</maven.jacoco.skip>
-            </properties>
+            <dependencies>
+		        <dependency>
+		            <groupId>org.codehaus.sonar-plugins.java</groupId>
+		            <artifactId>sonar-jacoco-listeners</artifactId>
+		            <scope>test</scope>
+		        </dependency>
+            </dependencies>
         </profile>
     </profiles>
 
@@ -2184,9 +2061,8 @@
         <maven-assembly-plugin.version>2.4.1</maven-assembly-plugin.version>
         <buildnumber-maven-plugin.version>1.3</buildnumber-maven-plugin.version>
 
-        <jacoco-maven-plugin.version>0.7.0.201403182114</jacoco-maven-plugin.version>
-        <sonar-maven-plugin.version>2.3.1</sonar-maven-plugin.version>
-        <sonar-jacoco-plugins.version>2.1</sonar-jacoco-plugins.version>
+        <sonar-maven-plugin.version>2.5</sonar-maven-plugin.version>
+        <sonar-jacoco-plugins.version>2.8</sonar-jacoco-plugins.version>
 
         <maven-jgitflow-plugin.version>1.0-m4.3</maven-jgitflow-plugin.version>
         <maven-project-info-reports-plugin.version>2.7</maven-project-info-reports-plugin.version>
@@ -2212,13 +2088,6 @@
 
         <!-- SONAR/JaCoCo configs -->
         <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-        <jacoco.out.ut.file>jacoco.exec</jacoco.out.ut.file>
-        <jacoco.outputDir>${project.build.directory}</jacoco.outputDir>
-        <sonar.jacoco.reportPath>${jacoco.outputDir}/${jacoco.out.ut.file}</sonar.jacoco.reportPath>
-        <jacoco.out.it.file>jacoco-it.exec</jacoco.out.it.file>
-        <sonar.jacoco.itReportPath>${jacoco.outputDir}/${jacoco.out.it.file}</sonar.jacoco.itReportPath>
-        <jacoco.version>${jacoco-maven-plugin.version}</jacoco.version>
 
         <web.port>8080</web.port>
         <web.host>localhost</web.host>
