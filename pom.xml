@@ -764,6 +764,11 @@
                                         <groupId>org.liquibase</groupId>
                                         <artifactId>liquibase-maven-plugin</artifactId>
                                         <versionRange>[3.3.2,)</versionRange>
+                                        <goals>
+				                            <goal>diff</goal>
+				                            <goal>updateSQL</goal>
+				                            <goal>update</goal>
+                                        </goals>
                                     </pluginExecutionFilter>
                                     <action>
                                         <ignore></ignore>
