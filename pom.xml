@@ -2051,7 +2051,7 @@
         <spring.social.twitter.version>1.1.1.RELEASE</spring.social.twitter.version>
         <spring.social.linkedin.version>1.0.1.RELEASE</spring.social.linkedin.version>
         
-        <spring-security-oauth2.version>2.0.4.RELEASE</spring-security-oauth2.version>
+        <spring-security-oauth2.version>2.0.6.RELEASE</spring-security-oauth2.version>
         <spring.shell.version>1.1.0.RELEASE</spring.shell.version>
         <selenium.version>2.43.1</selenium.version>
         <jackson.version>2.4.3</jackson.version>
