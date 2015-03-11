@@ -153,6 +153,14 @@
                 <includes>
                     <include>**/*-context.xml</include>
                     <include>**/*.bin</include>
+                    <include>**/*.eot</include>
+                    <include>**/*.svg</include>
+                    <include>**/*.ttf</include>
+                    <include>**/*.woff</include>
+                    <include>**/*.map</include>
+                    <include>**/*.css</include>
+                    <include>**/*.min</include>
+                    <include>**/*.js</include>
                 </includes>
             </resource>
             <resource>
@@ -164,6 +172,14 @@
                 <excludes>
                     <exclude>**/*-context.xml</exclude>
                     <exclude>**/*.bin</exclude>
+                    <exclude>**/*.eot</exclude>
+                    <exclude>**/*.svg</exclude>
+                    <exclude>**/*.ttf</exclude>
+                    <exclude>**/*.woff</exclude>
+                    <exclude>**/*.map</exclude>
+                    <exclude>**/*.css</exclude>
+                    <exclude>**/*.min</exclude>
+                    <exclude>**/*.js</exclude>
                 </excludes>
             </resource>
         </resources>
@@ -2009,7 +2025,7 @@
 
         <pmd.version>5.2.0</pmd.version>
         <aspects.version>1.8.2</aspects.version>
-        <joda-time.version>2.4.fix</joda-time.version>
+        <joda-time.version>2.7</joda-time.version>
         <jaxb-api.version>2.2.11</jaxb-api.version>
         <jsr250-api.version>1.0</jsr250-api.version>
         <glassfish.version>4.1</glassfish.version>
@@ -2042,7 +2058,7 @@
         <bouncycastle.version>1.46</bouncycastle.version>
         <javassist.version>3.18.2-GA</javassist.version>
         <rhino.version>1.7R4</rhino.version>
-        <spring.boot.version>1.1.8.RELEASE</spring.boot.version>
+        <spring.boot.version>1.2.2.RELEASE</spring.boot.version>
         <tapestry.version>5.4-beta22</tapestry.version>
         <selenide.version>2.15</selenide.version>
         <google.guava.version>18.0</google.guava.version>
