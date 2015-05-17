@@ -1827,7 +1827,6 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${google.guava.version}</version>
-                <scope>test</scope>
             </dependency>
             <!-- This uses Jasmine 2.0.0, but unable to parse angular sources -->
             <dependency>
