@@ -1991,6 +1991,11 @@
                                 </properties>
                             </configuration>
                         </plugin>
+                        <plugin>
+                            <groupId>org.jacoco</groupId>
+                            <artifactId>jacoco-maven-plugin</artifactId>
+                            <version>${jacoco.maven.version}</version>
+                        </plugin>
                     </plugins>
                 </pluginManagement>
             </build>
@@ -2105,6 +2110,7 @@
         <maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
         <maven-assembly-plugin.version>2.4.1</maven-assembly-plugin.version>
         <buildnumber-maven-plugin.version>1.3</buildnumber-maven-plugin.version>
+        <jacoco.maven.version>0.7.4.201502262128</jacoco.maven.version>
 
         <sonar-maven-plugin.version>2.5</sonar-maven-plugin.version>
         <sonar-jacoco-plugins.version>2.8</sonar-jacoco-plugins.version>
