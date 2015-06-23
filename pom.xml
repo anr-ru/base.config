@@ -357,6 +357,7 @@
                         <target>${java.compile.target.version}</target>
                         <showDeprecation>true</showDeprecation>
                         <showWarnings>true</showWarnings>
+                        <executable>${JAVA_HOME}/bin/javac</executable>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -1895,11 +1896,6 @@
                 <artifactId>mockito-core</artifactId>
                 <version>${mockito.version}</version>
                 <scope>test</scope>
-            </dependency>
-            <dependency>
-              <groupId>org.hamcrest</groupId>
-              <artifactId>hamcrest-core</artifactId>
-              <version>${hamcrest.version}1.3</version>
             </dependency>
             <!-- Math expression as strings -->
             <dependency>
