@@ -357,7 +357,7 @@
                         <target>${java.compile.target.version}</target>
                         <showDeprecation>true</showDeprecation>
                         <showWarnings>true</showWarnings>
-                        <executable>${JAVA_HOME}/bin/javac</executable>
+                        <!--executable>${JAVA_HOME}/bin/javac</executable-->
                     </configuration>
                 </plugin>
                 <plugin>
