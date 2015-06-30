@@ -509,6 +509,7 @@
 	                    <driver>org.postgresql.Driver</driver>
 	                    <format>flat</format>
 	                    <type>REFRESH</type>
+                        <skip>${maven.test.skip}</skip>
 	                </configuration>
 	                <dependencies>
 	                    <dependency>
@@ -846,6 +847,7 @@
 	                <!-- This may differ for dev/stage and preproduction -->
 	                <target>BOTH</target>
 	                <type>BOTH</type>
+                    <skip>${maven.test.skip}</skip>
 	              </configuration>
 	            </plugin>
                 <plugin>
@@ -944,6 +946,7 @@
                     <version>${sql-maven-plugin.version}</version>
                     <configuration>
                         <onError>continue</onError>
+                        <skip>${maven.test.skip}</skip>
                     </configuration>
                 </plugin>                                                            
             </plugins>
