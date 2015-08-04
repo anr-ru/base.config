@@ -2159,7 +2159,7 @@
         <maven-project-info-reports-plugin.version>2.7</maven-project-info-reports-plugin.version>
         <maven-jetty-plugin.version>6.1.26</maven-jetty-plugin.version>
         <yuicompressor-maven-plugin.version>1.2</yuicompressor-maven-plugin.version>
-        <hibernate4-maven-plugin>1.0.5</hibernate4-maven-plugin>
+        <hibernate4-maven-plugin>1.1.0</hibernate4-maven-plugin>
         <tomcat7-maven-plugin>2.2</tomcat7-maven-plugin>
         <frontend-maven-plugin>0.0.20</frontend-maven-plugin>
         <liquibase-maven-plugin.version>3.3.2</liquibase-maven-plugin.version>
