@@ -624,6 +624,7 @@
                                             <goal>copy-dependencies</goal>
                                             <goal>list</goal>
                                             <goal>tree</goal>
+                                            <goal>purge-local-repository</goal>
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
