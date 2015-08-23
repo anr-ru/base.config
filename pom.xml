@@ -2163,7 +2163,7 @@
         <hibernate4-maven-plugin>1.1.0</hibernate4-maven-plugin>
         <tomcat7-maven-plugin>2.2</tomcat7-maven-plugin>
         <frontend-maven-plugin>0.0.20</frontend-maven-plugin>
-        <liquibase-maven-plugin.version>3.3.2</liquibase-maven-plugin.version>
+        <liquibase-maven-plugin.version>3.4.1</liquibase-maven-plugin.version>
         <liquibase-hibernate4.version>3.5</liquibase-hibernate4.version>
 
         <node.version>v0.10.30</node.version>
