@@ -2051,6 +2051,31 @@
 		        </dependency>
             </dependencies>
         </profile>
+        <profile>
+            <id>macos</id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+	                    <plugin>
+	                        <groupId>org.apache.maven.plugins</groupId>
+	                        <artifactId>maven-compiler-plugin</artifactId>
+	                        <version>${maven-compiler-plugin.version}</version>
+	                        <configuration>
+	                            <verbose>false</verbose>
+	                            <fork>true</fork>
+	                            <compilerVersion>${java.compile.target.version}</compilerVersion>
+	                            <encoding>utf8</encoding>
+	                            <source>${java.compile.target.version}</source>
+	                            <target>${java.compile.target.version}</target>
+	                            <showDeprecation>true</showDeprecation>
+	                            <showWarnings>true</showWarnings>
+	                            <executable>${JAVA_HOME}/bin/javac</executable>
+	                        </configuration>
+	                    </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
     </profiles>
 
     <!-- Properties -->
