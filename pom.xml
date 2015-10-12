@@ -869,18 +869,18 @@
                     <version>${frontend-maven-plugin}</version>
                     <configuration>
                         <workingDirectory>${basedir}/src/frontend</workingDirectory>
-                        <installDirectory>${basedir}/target</installDirectory>
+                        <installDirectory>${basedir}/src/frontend</installDirectory>
                     </configuration>
                     <executions>
                         <execution>
                             <id>install node and npm</id>
-                            <phase>process-resources</phase>
+                            <phase>generate-resources</phase>
                             <goals>
                                 <goal>install-node-and-npm</goal>
                             </goals>
                             <configuration>
-		                        <nodeVersion>${node.version}</nodeVersion>
-		                        <npmVersion>${npm.version}</npmVersion>
+    	                        <nodeVersion>${node.version}</nodeVersion>
+    	                        <npmVersion>${npm.version}</npmVersion>
                             </configuration>
                         </execution>
                         <execution>
