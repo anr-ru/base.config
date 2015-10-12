@@ -868,23 +868,24 @@
                     <artifactId>frontend-maven-plugin</artifactId>
                     <version>${frontend-maven-plugin}</version>
                     <configuration>
-                        <workingDirectory>src/frontend</workingDirectory>
+                        <workingDirectory>${basedir}/src/frontend</workingDirectory>
+                        <installDirectory>${basedir}/target</installDirectory>
                     </configuration>
                     <executions>
                         <execution>
                             <id>install node and npm</id>
-                            <phase>process-test-resources</phase>
+                            <phase>generate-resources</phase>
                             <goals>
                                 <goal>install-node-and-npm</goal>
                             </goals>
                             <configuration>
-                                <nodeVersion>${node.version}</nodeVersion>
-                                <npmVersion>${npm.version}</npmVersion>
+		                        <nodeVersion>${node.version}</nodeVersion>
+		                        <npmVersion>${npm.version}</npmVersion>
                             </configuration>
                         </execution>
                         <execution>
                             <id>npm install</id>
-                            <phase>process-test-resources</phase>
+                            <phase>generate-resources</phase>
                             <goals>
                                 <goal>npm</goal>
                             </goals>
@@ -892,7 +893,7 @@
                                 <arguments>install</arguments>
                             </configuration>
                         </execution>
-                        <!--execution>
+                        <execution>
                             <id>bower install</id>
                             <phase>generate-resources</phase>
                             <goals>
@@ -901,10 +902,10 @@
                             <configuration>
                                 <arguments>install</arguments>
                             </configuration>
-                        </execution-->
+                        </execution>
                         <execution>
                             <id>grunt build</id>
-                            <phase>process-test-resources</phase>
+                            <phase>generate-resources</phase>
                             <goals>
                                 <goal>grunt</goal>
                             </goals>
@@ -914,6 +915,7 @@
                         </execution>
                         <execution>
                             <id>javascript tests</id>
+                            <phase>test</phase>
                             <goals>
                                 <goal>karma</goal>
                             </goals>
@@ -2192,12 +2194,12 @@
         <yuicompressor-maven-plugin.version>1.2</yuicompressor-maven-plugin.version>
         <hibernate4-maven-plugin>1.1.0</hibernate4-maven-plugin>
         <tomcat7-maven-plugin>2.2</tomcat7-maven-plugin>
-        <frontend-maven-plugin>0.0.20</frontend-maven-plugin>
+        <frontend-maven-plugin>0.0.26</frontend-maven-plugin>
         <liquibase-maven-plugin.version>3.4.1</liquibase-maven-plugin.version>
         <liquibase-hibernate4.version>3.5</liquibase-hibernate4.version>
 
-        <node.version>v0.10.30</node.version>
-        <npm.version>1.4.21</npm.version>
+        <node.version>v0.10.40</node.version>
+        <npm.version>2.4.1</npm.version>
         <commons.validator.version>1.4.1</commons.validator.version>
         <javax.valication>1.1.0.Final</javax.valication>
         <javax.el-api.version>3.0.0</javax.el-api.version>
