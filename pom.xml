@@ -182,6 +182,17 @@
                     <exclude>**/*.js</exclude>
                 </excludes>
             </resource>
+            <resource>
+                <directory>src/frontend</directory>
+                <targetPath>${project.build.directory}</targetPath>
+                <filtering>true</filtering>
+                <includes>
+                    <include>*.*</include>
+                    <include>bower</include>
+                    <include>karma</include>
+                    <include>npm</include>
+                </includes>
+            </resource>
         </resources>
         <testResources>
             <testResource>
@@ -749,7 +760,9 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <execute>
+                                            <runOnIncremental>true</runOnIncremental>
+                                        </execute>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -762,7 +775,9 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <execute>
+                                            <runOnIncremental>true</runOnIncremental>
+                                        </execute>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -867,10 +882,22 @@
                     <groupId>com.github.eirslett</groupId>
                     <artifactId>frontend-maven-plugin</artifactId>
                     <version>${frontend-maven-plugin}</version>
+                    <configuration>
+                        <workingDirectory>${project.build.directory}</workingDirectory>
+                        <srcdir>${basedir}/src/main/resources/static/</srcdir>
+                        <outputdir>${project.build.directory}/classes/static</outputdir>
+                        <installDirectory>${project.build.directory}</installDirectory>
+                        <triggerfiles>
+                          <triggerfile>${project.build.directory}/gruntFile.js</triggerfile>
+                          <triggerfile>${project.build.directory}/package.json</triggerfile>
+                          <triggerfile>${project.build.directory}/bower.json</triggerfile>
+                        </triggerfiles> 
+                        <arguments>${target.environment}</arguments>                   
+                    </configuration>
                     <executions>
                         <execution>
                             <id>install node and npm</id>
-                            <phase>process-test-resources</phase>
+                            <phase>process-resources</phase>
                             <goals>
                                 <goal>install-node-and-npm</goal>
                             </goals>
@@ -881,7 +908,7 @@
                         </execution>
                         <execution>
                             <id>npm install</id>
-                            <phase>process-test-resources</phase>
+                            <phase>process-resources</phase>
                             <goals>
                                 <goal>npm</goal>
                             </goals>
@@ -891,22 +918,28 @@
                         </execution>
                         <execution>
                             <id>bower install</id>
-                            <phase>process-test-resources</phase>
+                            <phase>process-resources</phase>
                             <goals>
                                 <goal>bower</goal>
                             </goals>
                             <configuration>
-                                <arguments>install</arguments>
+                                <arguments>install --force-latest</arguments>
                             </configuration>
                         </execution>
                         <execution>
                             <id>grunt build</id>
-                            <phase>process-test-resources</phase>
+                            <phase>process-resources</phase>
                             <goals>
                                 <goal>grunt</goal>
                             </goals>
                             <configuration>
-                                <arguments>--verbose</arguments>
+                                <srcdir>${basedir}/src/main/resources/static/</srcdir>
+                                <triggerfiles>
+                                  <triggerfile>${project.build.directory}/gruntFile.js</triggerfile>
+                                  <triggerfile>${project.build.directory}/package.json</triggerfile>
+                                  <triggerfile>${project.build.directory}/bower.json</triggerfile>
+                                </triggerfiles> 
+                                <arguments>--verbose ${target.environment}</arguments>
                             </configuration>
                         </execution>
                         <execution>
@@ -916,7 +949,7 @@
                                 <goal>karma</goal>
                             </goals>
                             <configuration>
-                                <karmaConfPath>karma.conf.js</karmaConfPath>
+                                <karmaConfPath>karma.conf.ci.js</karmaConfPath>
                                 <skipTests>${maven.test.skip}</skipTests>
                             </configuration>
                         </execution>
@@ -1978,6 +2011,7 @@
             <id>ci</id>
             <properties>
                 <buildNumber>${env.BUILD_NUMBER}</buildNumber>
+                <target.environment>build</target.environment>
             </properties>
         </profile>
         <profile>
@@ -2217,6 +2251,7 @@
 
         <dev.gitflow.master>master</dev.gitflow.master>
         <dev.gitflow.dev>dev</dev.gitflow.dev>
+        <target.environment>dev</target.environment>
 
         <!-- SONAR/JaCoCo configs -->
         <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
