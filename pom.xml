@@ -231,14 +231,7 @@
                     <include>**/web.xml</include>
                 </includes>
             </testResource>
-            <testResource>
-                <directory>src/test/javascript/config</directory>
-                <targetPath>${basedir}/src/frontend/</targetPath>
-                <filtering>true</filtering>
-                <includes>
-                    <include>*.json</include>
-                </includes>
-            </testResource>
+
         </testResources>
 
         <!-- Plugin management (Plugin configuration details and versions) -->
