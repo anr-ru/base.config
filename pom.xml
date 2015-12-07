@@ -881,11 +881,11 @@
                         <outputdir>${project.build.directory}/classes/static</outputdir>
                         <installDirectory>${project.build.directory}</installDirectory>
                         <triggerfiles>
-                          <triggerfile>${project.build.directory}/gruntFile.js</triggerfile>
-                          <triggerfile>${project.build.directory}/package.json</triggerfile>
-                          <triggerfile>${project.build.directory}/bower.json</triggerfile>
+                          <triggerfile>gruntFile.js</triggerfile>
+                          <triggerfile>package.json</triggerfile>
+                          <triggerfile>bower.json</triggerfile>
                         </triggerfiles> 
-                        <arguments>${target.environment}</arguments>                   
+                        <arguments>${target.environment}</arguments>
                     </configuration>
                     <executions>
                         <execution>
@@ -928,9 +928,9 @@
                             <configuration>
                                 <srcdir>${basedir}/src/main/resources/static/</srcdir>
                                 <triggerfiles>
-                                  <triggerfile>${project.build.directory}/gruntFile.js</triggerfile>
-                                  <triggerfile>${project.build.directory}/package.json</triggerfile>
-                                  <triggerfile>${project.build.directory}/bower.json</triggerfile>
+                                  <triggerfile>gruntFile.js</triggerfile>
+                                  <triggerfile>package.json</triggerfile>
+                                  <triggerfile>bower.json</triggerfile>
                                 </triggerfiles> 
                                 <arguments>--verbose ${target.environment}</arguments>
                             </configuration>
