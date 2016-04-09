@@ -1,8 +1,6 @@
 Base.Platform Project
 
-=============
-Config.Java
-=============
+# Config.Java
 
 This is some maven configuration, which can simplify creating of Java projects.
 It contains base settings for most popular plugins and dependecies.
