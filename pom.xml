@@ -403,7 +403,7 @@
                         <threadCount>1</threadCount -->
                         <argLine>-Xss1m -Xmx4g -XX:MaxPermSize=2g -Djava.awt.headless=true</argLine>
                         <excludes>
-                            <exclude>**\*IntegrationTest.java</exclude>
+                            <exclude>**/*IntegrationTest.java</exclude>
                         </excludes>
                     </configuration>
                 </plugin>
@@ -419,7 +419,7 @@
                         <threadCount>1</threadCount -->
                         <argLine>-Xss1m -Xmx4g -XX:MaxPermSize=2g -Djava.awt.headless=true</argLine>
                         <includes>
-                            <include>**\*IntegrationTest.java</include>
+                            <include>**/*IntegrationTest.java</include>
                         </includes>
                         <!-- Let's put failsafe reports with surefire to
                             have access to tests failures/success reports in sonar -->
