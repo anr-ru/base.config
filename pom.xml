@@ -2117,7 +2117,7 @@
         <javax.mail.version>1.5.2</javax.mail.version>
         <javax.ejb.version>3.2</javax.ejb.version>
         <dbunit.version>2.5.0</dbunit.version>
-        <postgresql.version>9.4-1201-jdbc41</postgresql.version>
+        <postgresql.version>9.4.1209</postgresql.version>
         <hsqldb.version>2.3.2</hsqldb.version>        
 
         <hibernate.version>4.3.6.Final</hibernate.version>
