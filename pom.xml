@@ -157,10 +157,13 @@
                     <include>**/*.svg</include>
                     <include>**/*.ttf</include>
                     <include>**/*.woff</include>
+                    <include>**/*.woff2</include>
+                    <include>**/*.otf</include>
                     <include>**/*.map</include>
                     <include>**/*.css</include>
                     <include>**/*.min</include>
                     <include>**/*.js</include>
+                    <include>**/*.html</include>
                 </includes>
             </resource>
             <resource>
@@ -180,6 +183,9 @@
                     <exclude>**/*.css</exclude>
                     <exclude>**/*.min</exclude>
                     <exclude>**/*.js</exclude>
+                    <exclude>**/*.woff2</exclude>
+                    <exclude>**/*.otf</exclude>
+                    <exclude>**/*.html</exclude>
                 </excludes>
             </resource>
             <resource>
