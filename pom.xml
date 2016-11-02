@@ -2184,7 +2184,7 @@
         <maven-ear-plugin.version>2.10.1</maven-ear-plugin.version>
         <properties-maven-plugin.version>1.0.1</properties-maven-plugin.version>
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
-        <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
+        <maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
         <maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
         <dbunit-maven-plugin.version>1.0-beta-3</dbunit-maven-plugin.version>
