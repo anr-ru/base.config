@@ -164,6 +164,7 @@
                     <include>**/*.min</include>
                     <include>**/*.js</include>
                     <include>**/*.html</include>
+                    <include>**/*.jsp</include>
                 </includes>
             </resource>
             <resource>
@@ -186,6 +187,7 @@
                     <exclude>**/*.woff2</exclude>
                     <exclude>**/*.otf</exclude>
                     <exclude>**/*.html</exclude>
+                    <exclude>**/*.jsp</exclude>
                 </excludes>
             </resource>
             <resource>
