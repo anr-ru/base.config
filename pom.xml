@@ -2176,8 +2176,8 @@
         <liquibase-maven-plugin.version>3.4.2</liquibase-maven-plugin.version>
         <liquibase-hibernate4.version>3.5</liquibase-hibernate4.version>
 
-        <node.version>v0.10.40</node.version>
-        <npm.version>2.4.1</npm.version>
+        <node.version>v6.9.1</node.version>
+        <npm.version>4.1.1</npm.version>
         <commons.validator.version>1.4.1</commons.validator.version>
         <javax.valication>1.1.0.Final</javax.valication>
         <javax.el-api.version>3.0.0</javax.el-api.version>
