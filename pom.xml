@@ -1915,17 +1915,6 @@
         </dependencies>
     </dependencyManagement>
 
-    <repositories>
-        <repository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/libs-snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <profiles>
         <profile>
             <id>developers</id>
@@ -2114,8 +2103,8 @@
         <ehcache.jmsreplication.version>0.9</ehcache.jmsreplication.version>
         <ehcache.core.version>2.6.11</ehcache.core.version>
         
-        <spring.data.jpa.version>1.11.0.M1</spring.data.jpa.version>
-        <spring.data.commons.version>1.13.0.M1</spring.data.commons.version>
+        <spring.data.jpa.version>1.11.0.RELEASE</spring.data.jpa.version>
+        <spring.data.commons.version>1.13.0.RELEASE</spring.data.commons.version>
         <springloaded.version>1.2.5.RELEASE</springloaded.version>
 
         <spring-ws.version>2.2.0.RELEASE</spring-ws.version>
