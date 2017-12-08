@@ -199,6 +199,8 @@
                     <include>bower</include>
                     <include>karma</include>
                     <include>npm</include>
+                    <include>gulp</include>
+                    <include>src/**</include>
                 </includes>
             </resource>
         </resources>
