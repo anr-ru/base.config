@@ -40,6 +40,21 @@
         <tag>HEAD</tag>
     </scm>
 
+    <distributionManagement>
+      <repository>
+        <id>packagecloud-travis</id>
+        <url>
+          packagecloud+https://packagecloud.io/ruanr/configjava
+        </url>
+      </repository>
+      <snapshotRepository>
+        <id>packagecloud-travis</id>
+        <url>
+          packagecloud+https://packagecloud.io/ruanr/configjava
+        </url>
+      </snapshotRepository>
+    </distributionManagement>
+
     <developers>
         <developer>
             <id>alex</id>
@@ -955,6 +970,11 @@
               <artifactId>wagon-webdav</artifactId>
               <version>1.0-beta-2</version>
            </extension>
+           <extension>
+              <groupId>io.packagecloud.maven.wagon</groupId>
+              <artifactId>maven-packagecloud-wagon</artifactId>
+              <version>0.0.4</version>
+           </extension>           
         </extensions>
     </build>
 
