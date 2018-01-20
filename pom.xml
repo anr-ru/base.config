@@ -1676,6 +1676,11 @@
                 <artifactId>libphonenumber</artifactId>
                 <version>${libphonenumber.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
+            </dependency>
             
             <!-- JEE -->
             <dependency>
@@ -2227,6 +2232,7 @@
         <amazon-sdk.version>1.11.38</amazon-sdk.version>
         <jjwt.version>0.7.0</jjwt.version>
         <libphonenumber.version>7.0.9</libphonenumber.version>
+        <jsoup.version>1.11.2</jsoup.version>
 
         <!-- Settings -->
         <JAVA_HOME>${env.JAVA_HOME}</JAVA_HOME>
