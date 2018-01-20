@@ -19,7 +19,7 @@
     <groupId>ru.anr</groupId>
     <artifactId>config.java</artifactId>
     <packaging>pom</packaging>
-    <name>Base Java configuration and dependencies</name>
+    <name>Base Maven Configuration and Dependencies</name>
     <version>0.9-SNAPSHOT</version>
 
     <url />
