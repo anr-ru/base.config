@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/anr-ru/config.java.svg?branch=master)](https://travis-ci.org/anr-ru/config.java)
+
 ## Base.Platform Project
 
 ### Config Java
