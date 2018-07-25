@@ -1,11 +1,13 @@
+[![Build Status](https://travis-ci.org/anr-ru/config.java.svg?branch=master)](https://travis-ci.org/anr-ru/config.java)
+
 ## Base.Platform Project
 
-# Config Java
+### Config Java
 
 These are some maven configurations which can simplify creating of Java projects from scratch.
 It contains base settings for most popular plugins and dependencies.
 
-You can use this artifact **ru.anr:config.java** as maven parent for own projects, like this:
+You can use this artifact **ru.anr:config.java** as the maven parent for your own projects, like this:
 
 ```xml
     <parent>    
@@ -15,14 +17,13 @@ You can use this artifact **ru.anr:config.java** as maven parent for own project
     </parent>
 ```
 
-
 Please use the following location for the project repository:
 
 ```xml
 <repositories>
     <repository>
       <id>anr-ru</id>
-      <url>https://https://packagecloud.io/ruanr/configjava/maven2</url>
+      <url>https://https://packagecloud.io/ruanr/baseplatform/maven2</url>
       <releases>
         <enabled>true</enabled>
       </releases>
