@@ -1603,6 +1603,11 @@
                 <artifactId>jaxb-api</artifactId>
                 <version>${jaxb-api.version}</version>
             </dependency>
+            <dependency>
+                <groupId>javax.json</groupId>
+                <artifactId>javax.json-api</artifactId>
+                <version>${jaxb.json.version}</version>
+            </dependency>
             
             <!-- Others -->            
             <dependency>
@@ -2121,6 +2126,7 @@
         <aspects.version>1.8.9</aspects.version>
         <joda-time.version>2.9.3</joda-time.version>
         <jaxb-api.version>2.2.11</jaxb-api.version>
+        <jaxb.json.version>1.1.2</jaxb.json.version>
         <jsr250-api.version>1.0</jsr250-api.version>
         <glassfish.version>4.1.1</glassfish.version>
         <servlet.version>3.1.0</servlet.version>
