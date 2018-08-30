@@ -608,6 +608,23 @@
                     </configuration>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-scm-plugin</artifactId>
+                    <version>${maven-scm-plugin.version}</version>
+                    <configuration>
+                        <tag>${buildNumber}</tag>
+                    </configuration>
+                    <executions>
+                      <execution>
+                        <id>createTag</id>
+                        <phase>install</phase>
+                        <goals>
+                          <goal>tag</goal>
+                        </goals>
+                      </execution>
+                    </executions>
+                </plugin>
+                <plugin>
                     <!-- deprecated, use maven frontend plugin -->
                     <groupId>net.alchim31.maven</groupId>
                     <artifactId>yuicompressor-maven-plugin</artifactId>
@@ -2217,6 +2234,7 @@
         <sonar.scanner.version>3.0.1</sonar.scanner.version>
 
         <maven-jgitflow-plugin.version>1.0-m5.1</maven-jgitflow-plugin.version>
+        <maven-scm-plugin.version>1.10.0</maven-scm-plugin.version>
         <maven-project-info-reports-plugin.version>2.9</maven-project-info-reports-plugin.version>
         <maven-jetty-plugin.version>6.1.26</maven-jetty-plugin.version>
         <yuicompressor-maven-plugin.version>1.2</yuicompressor-maven-plugin.version>
