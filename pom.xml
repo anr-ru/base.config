@@ -1686,11 +1686,6 @@
                 <artifactId>jsoup</artifactId>
                 <version>${jsoup.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.quickfixj</groupId>
-                <artifactId>quickfixj-all</artifactId>
-                <version>${quickfixj.version}</version>
-            </dependency>
 
             <!-- JEE -->
             <dependency>
@@ -2244,7 +2239,6 @@
         <jjwt.version>0.7.0</jjwt.version>
         <libphonenumber.version>7.0.9</libphonenumber.version>
         <jsoup.version>1.11.2</jsoup.version>
-        <quickfixj.version>2.0.0</quickfixj.version>
 
         <!-- Settings -->
         <JAVA_HOME>${env.JAVA_HOME}</JAVA_HOME>
