@@ -1,10 +1,10 @@
 [![Build Status](https://travis-ci.org/anr-ru/config.java.svg?branch=master)](https://travis-ci.org/anr-ru/config.java)
 
-## Base.Platform Project
+## Part Of [Base.Platform Project](https://github.com/anr-ru/base.platform.parent)
 
 ### Config Java
 
-These are some maven configurations which can simplify creating of Java projects from scratch.
+Here are provided some maven configurations which can simplify creating Java projects from scratch.
 It contains base settings for most popular plugins and dependencies.
 
 You can use this artifact **ru.anr:config.java** as the maven parent for your own projects, like this:
