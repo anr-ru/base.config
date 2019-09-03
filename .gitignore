@@ -2,3 +2,6 @@
 /.settings
 .pmd
 .project
+/.idea/
+config.java.iml
+
