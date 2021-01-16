@@ -10,10 +10,10 @@ It contains base settings for most popular plugins and dependencies.
 You can use this artifact **ru.anr:config.java** as the maven parent for your own projects, like this:
 
 ```xml
-    <parent>    
+    <parent>
         <groupId>ru.anr</groupId>
         <artifactId>config.java</artifactId>
-        <version>0.9-SNAPSHOT</version>
+        <version>1.1.0</version>
     </parent>
 ```
 
