@@ -1,7 +1,7 @@
-<configuration>
+<gitVersioning>
    <branch>
        <pattern>master</pattern>
-            <versionFormat>${version}</versionFormat>
+       <versionFormat>${version}</versionFormat>
    </branch>
    <branch>
         <pattern>.*</pattern>
@@ -9,11 +9,11 @@
         <versionFormat>${branch}-SNAPSHOT</versionFormat>
     </branch>
     <tag>
-        <pattern><![CDATA[v.*]]></pattern>
-        <!-- i.e. '1.0.1' . Force to use tags for use this dependency somewhere-->
-        <versionFormat>${version.release}</versionFormat>
+        <pattern><![CDATA[v(?<tagVersion>[0-9].*)]]></pattern>
+        <!-- i.e. '2', '1.0.1'. Force to use tags for use this dependency somewhere-->
+        <versionFormat>${tagVersion}</versionFormat>
     </tag>
     <commit>
         <versionFormat>${version}-${commit.short}</versionFormat>
     </commit>
-</configuration>
+</gitVersioning>
