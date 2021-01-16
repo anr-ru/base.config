@@ -63,16 +63,11 @@
             <email>alexey.p.romanchuk@gmail.com</email>
             <timezone>5</timezone>
         </developer>
-        <developer>
-            <id>tsergey</id>
-            <name>Sergey Tarabukin</name>
-            <email></email>
-            <timezone>5</timezone>
-        </developer>
     </developers>
 
     <!-- Plugins  -->
     <build>
+        <!-- The default name. Actual names are defined in maven-git-versioning configuration. -->
         <finalName>${project.artifactId}-${project.version}</finalName>
         <defaultGoal>install</defaultGoal>
         <plugins>
@@ -252,7 +247,6 @@
                     <include>**/web.xml</include>
                 </includes>
             </testResource>
-
         </testResources>
 
         <!-- Plugin management (Plugin configuration details and versions) -->
@@ -278,7 +272,7 @@
                                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             </manifest>
                             <manifestEntries>
-                                <Implementation-Build>${buildNumber}</Implementation-Build>
+                                <Implementation-Build>${project.version}</Implementation-Build>
                             </manifestEntries>
                         </archive>
                     </configuration>
@@ -293,7 +287,7 @@
                                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             </manifest>
                             <manifestEntries>
-                                <Implementation-Build>${buildNumber}</Implementation-Build>
+                                <Implementation-Build>${project.version}</Implementation-Build>
                             </manifestEntries>
                         </archive>
                         <warSourceExcludes>WEB-INF/web.xml</warSourceExcludes>
@@ -312,7 +306,7 @@
                                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             </manifest>
                             <manifestEntries>
-                                <Implementation-Build>${buildNumber}</Implementation-Build>
+                                <Implementation-Build>${project.version}</Implementation-Build>
                             </manifestEntries>
                         </archive>
                     </configuration>
@@ -328,27 +322,9 @@
                                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             </manifest>
                             <manifestEntries>
-                                <Implementation-Build>${buildNumber}</Implementation-Build>
+                                <Implementation-Build>${project.version}</Implementation-Build>
                             </manifestEntries>
                         </archive>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-pmd-plugin</artifactId>
-                    <version>${maven-pmd-plugin.version}</version>
-                    <configuration>
-                        <aggregate>true</aggregate>
-                        <linkXref>true</linkXref>
-                        <targetJdk>${java.compile.target.version}</targetJdk>
-                        <includeTests>true</includeTests>
-                        <sourceEncoding>UTF-8</sourceEncoding>
-                        <rulesets>
-                            <ruleset>https://raw.githubusercontent.com/anr-ru/code.conventions/master/eclipse/java/pmd-settings.xml</ruleset>
-                            <ruleset>https://raw.githubusercontent.com/anr-ru/code.conventions/master/eclipse/java/pmd-tests-settings.xml</ruleset>
-                        </rulesets>
-                        <xrefLocation>target/site/xref</xrefLocation>
-                        <xrefTestLocation>target/site/xref-test</xrefTestLocation>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -369,7 +345,6 @@
                         <target>${java.compile.target.version}</target>
                         <showDeprecation>true</showDeprecation>
                         <showWarnings>true</showWarnings>
-                        <!--executable>${JAVA_HOME}/bin/javac</executable-->
                     </configuration>
                 </plugin>
                 <plugin>
@@ -451,30 +426,6 @@
                     </configuration>
                 </plugin>
                 <plugin>
-                    <groupId>com.github.spotbugs</groupId>
-                    <artifactId>spotbugs</artifactId>
-                    <version>${maven-spotbugs-plugin.version}</version>
-                    <configuration>
-                        <xmlOutput>true</xmlOutput>
-                        <threshold>Low</threshold>
-                        <effort>Max</effort>
-                        <xrefLocation>target/site/xref</xrefLocation>
-                        <xrefTestLocation>target/site/xref-test</xrefTestLocation>
-                        <excludeFilterFile>https://raw.githubusercontent.com/anr-ru/code.conventions/master/eclipse/java/findbugs-filter.xml</excludeFilterFile>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>${maven-checkstyle-plugin.version}</version>
-                    <configuration>
-                        <includes>**/*java</includes>
-                        <encoding>UTF-8</encoding>
-                        <xrefLocation>target/site/xref</xrefLocation>
-                        <configLocation>https://raw.githubusercontent.com/anr-ru/code.conventions/master/eclipse/java/checkstyle-settings.xml</configLocation>
-                    </configuration>
-                </plugin>
-                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
                     <version>${maven-dependency-plugin.version}</version>
@@ -524,7 +475,7 @@
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring.boot.version}</version>
+                    <version>${spring-boot.version}</version>
                     <executions>
                         <execution>
                           <goals>
@@ -535,8 +486,8 @@
                 </plugin>
 	            <plugin>
 	              <groupId>de.juplo</groupId>
-	              <artifactId>hibernate4-maven-plugin</artifactId>
-	              <version>${hibernate4-maven-plugin}</version>
+	              <artifactId>hibernate-maven-plugin</artifactId>
+	              <version>${hibernate-maven-plugin}</version>
 	              <executions>
 	                <execution>
 	                  <id>export</id>
@@ -585,7 +536,7 @@
                     </configuration>
                     <executions>
                         <execution>
-                            <id>install node and npm</id>
+                            <id>install-node-and-npm</id>
                             <phase>process-resources</phase>
                             <goals>
                                 <goal>install-node-and-npm</goal>
@@ -596,7 +547,7 @@
                             </configuration>
                         </execution>
                         <execution>
-                            <id>npm install</id>
+                            <id>npm-install</id>
                             <phase>process-resources</phase>
                             <goals>
                                 <goal>npm</goal>
@@ -664,18 +615,8 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>pmd</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
+                    <version>${maven-surefire-report-plugin.version}</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -684,18 +625,6 @@
                         </reports>
                     </reportSet>
                 </reportSets>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jxr-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -723,6 +652,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
           <groupId>org.hamcrest</groupId>
@@ -742,10 +672,9 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
         </dependency>
-
     </dependencies>
 
-    <!-- Use dependency management to reduce verbosity in projects -->
+    <!-- Use these dependency management to reduce verbosity in projects -->
     <dependencyManagement>
         <dependencies>
             <!-- SPRING -->
@@ -907,7 +836,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot</artifactId>
-                <version>${spring.boot.version}</version>
+                <version>${spring-boot.version}</version>
             </dependency>
             <dependency>
                  <groupId>org.springframework.shell</groupId>
@@ -917,23 +846,24 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-autoconfigure</artifactId>
-                <version>${spring.boot.version}</version>
+                <version>${spring-boot.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-jpa</artifactId>
-                <version>${spring.data.jpa.version}</version>
+                <version>${spring-data-jpa.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-commons</artifactId>
-                <version>${spring.data.commons.version}</version>
+                <version>${spring-data-commons.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-aspects</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+            <!-- JSON/XML serialization -->
 	        <dependency>
 	            <groupId>com.fasterxml.jackson.core</groupId>
 	            <artifactId>jackson-core</artifactId>
@@ -974,7 +904,7 @@
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-core</artifactId>
-                <version>${spring.security.version}</version>
+                <version>${spring-security.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>commons-logging</groupId>
@@ -985,7 +915,7 @@
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-acl</artifactId>
-                <version>${spring.security.version}</version>
+                <version>${spring-security.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>commons-logging</groupId>
@@ -996,7 +926,7 @@
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-web</artifactId>
-                <version>${spring.security.version}</version>
+                <version>${spring-security.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>commons-logging</groupId>
@@ -1007,7 +937,7 @@
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-config</artifactId>
-                <version>${spring.security.version}</version>
+                <version>${spring-security.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>commons-logging</groupId>
@@ -1018,7 +948,7 @@
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-aspects</artifactId>
-                <version>${spring.security.version}</version>
+                <version>${spring-security.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.security.oauth</groupId>
@@ -1028,36 +958,9 @@
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-crypto</artifactId>
-                <version>${spring.security.version}</version>
+                <version>${spring-security.version}</version>
             </dependency>
 
-            <!-- Spring social -->
-            <dependency>
-                <groupId>org.springframework.social</groupId>
-                <artifactId>spring-social-core</artifactId>
-                <version>${spring.social.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.social</groupId>
-                <artifactId>spring-social-web</artifactId>
-                <version>${spring.social.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.social</groupId>
-                <artifactId>spring-social-facebook</artifactId>
-                <version>${spring.social.facebook.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.social</groupId>
-                <artifactId>spring-social-twitter</artifactId>
-                <version>${spring.social.twitter.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.social</groupId>
-                <artifactId>spring-social-linkedin</artifactId>
-                <version>${spring.social.linkedin.version}</version>
-            </dependency>
-            
             <!-- TESTING -->
             <dependency>
                 <groupId>org.sonarsource.java</groupId>
@@ -1181,7 +1084,7 @@
             <dependency>
                 <groupId>commons-validator</groupId>
                 <artifactId>commons-validator</artifactId>
-                <version>${commons.validator.version}</version>
+                <version>${commons-validator.version}</version>
             </dependency>        
             <dependency>
                 <groupId>javax.validation</groupId>
@@ -1309,21 +1212,16 @@
             <!-- Security libs -->
             <dependency>
                 <groupId>org.bouncycastle</groupId>
-                <artifactId>bcpg-jdk15on</artifactId>
+                <artifactId>bcpg-jdk15to18</artifactId>
                 <version>${bouncycastle.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.bouncycastle</groupId>
-                <artifactId>bcprov-ext-jdk15on</artifactId>
+                <artifactId>bcprov-ext-jdk15to18</artifactId>
                 <version>${bouncycastle.version}</version>
             </dependency>
 
-            <!-- Web development -->
-            <dependency>
-                <groupId>org.mozilla</groupId>
-                <artifactId>rhino</artifactId>
-                <version>${rhino.version}</version>
-            </dependency>
+            <!-- Web/Services development -->
             <dependency>
                 <groupId>org.springframework.ws</groupId>
                 <artifactId>spring-ws-core</artifactId>
@@ -1398,9 +1296,9 @@
             
             <!-- Working with Docker from Java -->
             <dependency>
-                  <groupId>com.github.docker-java</groupId>
-                  <artifactId>docker-java</artifactId>
-                  <version>${docker.java.version}</version>
+                <groupId>com.github.docker-java</groupId>
+                <artifactId>docker-java</artifactId>
+                <version>${docker-java.version}</version>
             </dependency>        
             
             <!-- jsonrpc4j -->
@@ -1452,7 +1350,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <format>${env.USER}-{0,date,yyyy-MM-dd-HH-mm-ss}</format>
+                            <format>${env.USER}-local</format>
                             <items>
                                 <item>timestamp</item>
                             </items>
@@ -1501,42 +1399,37 @@
         <skipTests>false</skipTests>
 
         <!-- Logging -->
-        <slf4j.version>1.7.28</slf4j.version>
+        <slf4j.version>1.7.30</slf4j.version>
         <logback.version>1.2.3</logback.version>
 
         <!-- Testing -->
-        <junit.version>5.5.1</junit.version>
-        <hamcrest.version>2.1</hamcrest.version>
-        <selenide.version>5.2.8</selenide.version>
+        <junit.version>5.7.0</junit.version>
+        <hamcrest.version>2.2</hamcrest.version>
+        <selenide.version>5.17.4</selenide.version>
         <selenium.version>3.141.59</selenium.version>
 
         <!-- Apache -->
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
-        <commons-compress.version>1.19</commons-compress.version>
+        <commons-compress.version>1.20</commons-compress.version>
         <commons-collections.version>4.4</commons-collections.version>
-        <commons-io.version>2.6</commons-io.version>
-        <commons-dbcp.version>2.7.0</commons-dbcp.version>
-        <commons-lang.version>3.9</commons-lang.version>
+        <commons-io.version>2.8.9</commons-io.version>
+        <commons-dbcp.version>2.8.0</commons-dbcp.version>
+        <commons-lang.version>3.11</commons-lang.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
-        <commons.validator.version>1.6</commons.validator.version>
+        <commons-validator.version>1.7</commons-validator.version>
 
         <!-- Spring -->
-        <spring.version>5.1.9.RELEASE</spring.version>
-        <spring.security.version>5.1.6.RELEASE</spring.security.version>
-        <spring-security-oauth2.version>2.3.6.RELEASE</spring-security-oauth2.version>
-        <spring.data.jpa.version>2.1.10.RELEASE</spring.data.jpa.version>
-        <spring.data.commons.version>2.1.10.RELEASE</spring.data.commons.version>
-        <springloaded.version>1.2.5.RELEASE</springloaded.version>
-        <spring-ws.version>3.0.7.RELEASE</spring-ws.version>
-        <spring.boot.version>2.1.7.RELEASE</spring.boot.version>
-        <spring.social.version>1.1.6.RELEASE</spring.social.version>
-        <spring.social.facebook.version>2.0.3.RELEASE</spring.social.facebook.version>
-        <spring.social.twitter.version>1.1.2.RELEASE</spring.social.twitter.version>
-        <spring.social.linkedin.version>1.0.2.RELEASE</spring.social.linkedin.version>
-        <spring.shell.version>2.0.0.RELEASE</spring.shell.version>
+        <spring.version>5.2.12.RELEASE</spring.version>
+        <spring-security.version>5.3.6.RELEASE</spring-security.version>
+        <spring-security-oauth2.version>2.5.0.RELEASE</spring-security-oauth2.version>
+        <spring-data-jpa.version>2.1.10.RELEASE</spring-data-jpa.version>
+        <spring-data-commons.version>2.3.6.RELEASE</spring-data-commons.version>
+        <spring-ws.version>3.0.10.RELEASE</spring-ws.version>
+        <spring-boot.version>2.3.8.RELEASE</spring-boot.version>
+        <spring.shell.version>2.0.1.RELEASE</spring.shell.version>
 
         <!-- JEE -->
-        <aspects.version>1.9.4</aspects.version>
+        <aspects.version>1.9.6</aspects.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <jaxb.json.version>1.1.4</jaxb.json.version>
         <jsr250-api.version>1.3.2</jsr250-api.version>
@@ -1548,83 +1441,85 @@
         <javax.ejb.version>3.2.2</javax.ejb.version>
 
         <!-- Dabatase -->
-        <dbunit.version>2.6.0</dbunit.version>
-        <postgresql.version>42.2.6</postgresql.version>
-        <hsqldb.version>2.5.0</hsqldb.version>
-        <mysql.version>8.0.17</mysql.version>
+        <dbunit.version>2.7.0</dbunit.version>
+        <postgresql.version>42.2.18</postgresql.version>
+        <hsqldb.version>2.5.1</hsqldb.version>
+        <mysql.version>8.0.22</mysql.version>
 
-        <hibernate.version>5.4.4.Final</hibernate.version>
-        <hibernate-tools.version>5.4.4.Final</hibernate-tools.version>
-        <hibernate-validator.version>6.0.17.Final</hibernate-validator.version>
-        <c3p0.version>0.9.5.4</c3p0.version>
+        <hibernate.version>5.4.27.Final</hibernate.version>
+        <hibernate-tools.version>5.4.27.Final</hibernate-tools.version>
+        <hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
+        <c3p0.version>0.9.5.5</c3p0.version>
         <ehcache.jmsreplication.version>0.5</ehcache.jmsreplication.version>
 
-
-        <httpclient.version>4.5.9</httpclient.version>
-        <bouncycastle.version>1.62</bouncycastle.version>
-        <javassist.version>3.25.0-GA</javassist.version>
-        <rhino.version>1.7.11</rhino.version>
-        <google.guava.version>28.1-jre</google.guava.version>
-        <jackson.version>2.9.9</jackson.version>
-        <jackson.databind.version>2.9.9</jackson.databind.version>
+        <httpclient.version>4.5.13</httpclient.version>
+        <bouncycastle.version>1.68</bouncycastle.version>
+        <javassist.version>3.27.0-GA</javassist.version>
+        <google.guava.version>30.1-jre</google.guava.version>
+        <jackson.version>2.12.1</jackson.version>
+        <jackson.databind.version>2.12.1</jackson.databind.version>
 
         <!-- Maven -->
-        <maven-pmd-plugin.version>3.12.0</maven-pmd-plugin.version>
-        <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
         <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
-        <maven-spotbugs-plugin.version>3.1.12</maven-spotbugs-plugin.version>
-        <maven-checkstyle-plugin.version>3.1.0</maven-checkstyle-plugin.version>
-        <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
+        <maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
-        <maven-help-plugin.version>2.2</maven-help-plugin.version>
+        <maven-help-plugin.version>3.2.0</maven-help-plugin.version>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-        <maven-jar-plugin.version>2.6</maven-jar-plugin.version>
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
-        <maven-ejb-plugin.version>2.5.1</maven-ejb-plugin.version>
-        <maven-ear-plugin.version>2.10.1</maven-ear-plugin.version>
-        <maven-properties-plugin.version>1.0.1</maven-properties-plugin.version>
+        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+        <maven-war-plugin.version>3.3.1</maven-war-plugin.version>
+        <maven-ejb-plugin.version>3.1.0</maven-ejb-plugin.version>
+        <maven-ear-plugin.version>3.2.0</maven-ear-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
-        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+        <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
         <dbunit-maven-plugin.version>1.0-beta-3</dbunit-maven-plugin.version>
-        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
-        <maven-site-plugin.version>3.8.2</maven-site-plugin.version>
-        <maven-assembly-plugin.version>3.1.1</maven-assembly-plugin.version>
-        <buildnumber-maven-plugin.version>1.3</buildnumber-maven-plugin.version>
-        <jacoco.maven.version>0.7.6.201602180812</jacoco.maven.version>
+        <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
+        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+        <jacoco.maven.version>0.8.6</jacoco.maven.version>
         <sql-maven-plugin.version>1.5</sql-maven-plugin.version>
         <hibernate54-ddl-maven-plugin.version>2.3.0</hibernate54-ddl-maven-plugin.version>
         <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
-        <hibernate4-maven-plugin>1.1.1</hibernate4-maven-plugin>
-        <frontend-maven-plugin.version>1.8.0</frontend-maven-plugin.version>
-        <liquibase-maven-plugin.version>3.8.0</liquibase-maven-plugin.version>
-        <liquibase-hibernate5.version>3.7</liquibase-hibernate5.version>
+        <hibernate-maven-plugin>2.1.1</hibernate-maven-plugin>
+        <frontend-maven-plugin.version>1.11.0</frontend-maven-plugin.version>
+        <liquibase-maven-plugin.version>4.2.2</liquibase-maven-plugin.version>
+        <liquibase-hibernate5.version>4.2.2</liquibase-hibernate5.version>
+        <maven-surefire-report-plugin.version>2.22.2</maven-surefire-report-plugin.version>
 
+        <!-- Really needed?  -->
+        <buildnumber-maven-plugin.version>1.4</buildnumber-maven-plugin.version>
+        <maven-properties-plugin.version>1.0.0</maven-properties-plugin.version>
+        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+        <maven-site-plugin.version>3.9.1</maven-site-plugin.version>
+
+        <!-- Sonar -->
         <sonar-jacoco-plugins.version>5.14.0.18788</sonar-jacoco-plugins.version>
-        <sonar.scanner.version>3.6.1.1688</sonar.scanner.version>
+        <sonar.scanner.version>3.8.0.2131</sonar.scanner.version>
 
-        <node.version>v10.16.3</node.version>
-        <npm.version>6.11.2</npm.version>
+        <node.version>v12.18.1</node.version>
+        <npm.version>6.14.5</npm.version>
+
         <javax.validation>2.0.1.Final</javax.validation>
         <javax.el-api.version>3.0.0</javax.el-api.version>
-        <javax.el.version>2.2.6</javax.el.version>
+
+        <!-- Good utils -->
         <jsonrpc4j.version>1.5.3</jsonrpc4j.version>
-        <docker.java.version>3.1.5</docker.java.version>
-        <zip4j.version>2.1.2</zip4j.version>
-        <mockito.version>3.0.0</mockito.version>
+        <docker-java.version>3.2.7</docker-java.version>
+        <zip4j.version>2.6.4</zip4j.version>
+        <mockito.version>3.7.0</mockito.version>
         <exp4j.version>0.4.8</exp4j.version>
-        <java-xmlbuilder.version>1.2</java-xmlbuilder.version>
-        <jjwt.version>0.10.7</jjwt.version>
-        <libphonenumber.version>8.10.17</libphonenumber.version>
-        <jsoup.version>1.12.1</jsoup.version>
+        <java-xmlbuilder.version>1.3</java-xmlbuilder.version>
+        <jjwt.version>0.11.2</jjwt.version>
+        <libphonenumber.version>8.12.16</libphonenumber.version>
+        <jsoup.version>1.13.1</jsoup.version>
 
         <!-- Settings -->
         <JAVA_HOME>${env.JAVA_HOME}</JAVA_HOME>
         <JAVA_1_8_HOME>${env.JAVA_HOME}</JAVA_1_8_HOME>
+        <JAVA_11_HOME>${env.JAVA_HOME}</JAVA_11_HOME>
         
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
         <java.compile.target.version>${java.version}</java.compile.target.version>
 
         <target.environment>dev</target.environment>
