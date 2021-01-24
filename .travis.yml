@@ -18,4 +18,3 @@ deploy:
   script: "mvn -P ci deploy"
   skip_cleanup: false
   condition: "$TRAVIS_TAG = ^v*$ OR branch = master"
-    

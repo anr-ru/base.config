@@ -1,5 +1,5 @@
 <!-- 
- * Copyright 2014-2019 the original author or authors.
+ * Copyright 2014-2021 the original author or authors.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -25,7 +25,7 @@
 
     <url />
     <prerequisites>
-        <maven>3.0.4</maven>
+        <maven>3.6.3</maven>
     </prerequisites>
 
     <licenses>
@@ -371,7 +371,29 @@
                                 <head>Created at:</head>
                             </tag>
                         </tags>
+                        <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
                     </configuration>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <!-- Unit tests execution -->
@@ -604,6 +626,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -616,7 +639,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
-                    <version>${maven-surefire-report-plugin.version}</version>
+                <version>${maven-surefire-report-plugin.version}</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -1027,6 +1050,11 @@
                 <artifactId>commons-fileupload</artifactId>
                 <version>${commons-fileupload.version}</version>
             </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.version}</version>
+            </dependency>
 
             <!-- LOGS -->
             <dependency>
@@ -1096,7 +1124,11 @@
                <artifactId>javax.el-api</artifactId>
                <version>${javax.el-api.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.glassfish.web</groupId>
+                <artifactId>javax.el</artifactId>
+                <version>${glassfish.javax.el.version}</version>
+            </dependency>
             <!-- XML, JAXB -->
             <dependency>
                 <groupId>javax.xml.bind</groupId>
@@ -1107,6 +1139,16 @@
                 <groupId>javax.json</groupId>
                 <artifactId>javax.json-api</artifactId>
                 <version>${jaxb.json.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.xml.bind</groupId>
+                <artifactId>jaxb-core</artifactId>
+                <version>${jaxb-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.xml.bind</groupId>
+                <artifactId>jaxb-impl</artifactId>
+                <version>${jaxb-impl.version}</version>
             </dependency>
             
             <!-- Others -->            
@@ -1208,7 +1250,6 @@
                 <version>${servlet.version}</version>
                 <scope>provided</scope>
             </dependency>
-
             <!-- Security libs -->
             <dependency>
                 <groupId>org.bouncycastle</groupId>
@@ -1367,6 +1408,7 @@
         <profile>
             <id>ci</id>
             <properties>
+                <!--suppress UnresolvedMavenProperty -->
                 <buildNumber>${env.BUILD_NUMBER}</buildNumber>
                 <target.environment>build</target.environment>
             </properties>
@@ -1374,12 +1416,14 @@
         <profile>
             <id>stage-deploy</id>
             <properties>
+                <!--suppress UnresolvedMavenProperty -->
                 <buildNumber>${env.BUILD_NUMBER}</buildNumber>
             </properties>
         </profile>
         <profile>
             <id>ci-reporter</id>
             <properties>
+                <!--suppress UnresolvedMavenProperty -->
                 <buildNumber>${env.BUILD_NUMBER}</buildNumber>
             </properties>
         </profile>
@@ -1388,6 +1432,7 @@
             <build>
             </build>
             <properties>
+                <!--suppress UnresolvedMavenProperty -->
                 <buildNumber>${env.BUILD_NUMBER}</buildNumber>
             </properties>
         </profile>
@@ -1412,20 +1457,21 @@
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <commons-compress.version>1.20</commons-compress.version>
         <commons-collections.version>4.4</commons-collections.version>
-        <commons-io.version>2.8.9</commons-io.version>
+        <commons-io.version>2.8.0</commons-io.version>
         <commons-dbcp.version>2.8.0</commons-dbcp.version>
         <commons-lang.version>3.11</commons-lang.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
         <commons-validator.version>1.7</commons-validator.version>
+        <commons-codec.version>1.15</commons-codec.version>
 
         <!-- Spring -->
-        <spring.version>5.2.12.RELEASE</spring.version>
-        <spring-security.version>5.3.6.RELEASE</spring-security.version>
+        <spring.version>5.3.3</spring.version>
+        <spring-security.version>5.4.2</spring-security.version>
         <spring-security-oauth2.version>2.5.0.RELEASE</spring-security-oauth2.version>
-        <spring-data-jpa.version>2.1.10.RELEASE</spring-data-jpa.version>
-        <spring-data-commons.version>2.3.6.RELEASE</spring-data-commons.version>
+        <spring-data-jpa.version>2.4.3</spring-data-jpa.version>
+        <spring-data-commons.version>2.4.3</spring-data-commons.version>
         <spring-ws.version>3.0.10.RELEASE</spring-ws.version>
-        <spring-boot.version>2.3.8.RELEASE</spring-boot.version>
+        <spring-boot.version>2.4.2</spring-boot.version>
         <spring.shell.version>2.0.1.RELEASE</spring.shell.version>
 
         <!-- JEE -->
@@ -1439,6 +1485,8 @@
         <jms.version>2.0.1</jms.version>
         <javax.mail.version>1.6.2</javax.mail.version>
         <javax.ejb.version>3.2.2</javax.ejb.version>
+        <jaxb-core.version>2.3.0.1</jaxb-core.version>
+        <jaxb-impl.version>2.3.3</jaxb-impl.version>
 
         <!-- Dabatase -->
         <dbunit.version>2.7.0</dbunit.version>
@@ -1486,6 +1534,7 @@
         <liquibase-maven-plugin.version>4.2.2</liquibase-maven-plugin.version>
         <liquibase-hibernate5.version>4.2.2</liquibase-hibernate5.version>
         <maven-surefire-report-plugin.version>2.22.2</maven-surefire-report-plugin.version>
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
 
         <!-- Really needed?  -->
         <buildnumber-maven-plugin.version>1.4</buildnumber-maven-plugin.version>
@@ -1502,6 +1551,7 @@
 
         <javax.validation>2.0.1.Final</javax.validation>
         <javax.el-api.version>3.0.0</javax.el-api.version>
+        <glassfish.javax.el.version>2.2.6</glassfish.javax.el.version>
 
         <!-- Good utils -->
         <jsonrpc4j.version>1.5.3</jsonrpc4j.version>
@@ -1515,9 +1565,10 @@
         <jsoup.version>1.13.1</jsoup.version>
 
         <!-- Settings -->
+        <!--suppress UnresolvedMavenProperty -->
         <JAVA_HOME>${env.JAVA_HOME}</JAVA_HOME>
-        <JAVA_1_8_HOME>${env.JAVA_HOME}</JAVA_1_8_HOME>
-        <JAVA_11_HOME>${env.JAVA_HOME}</JAVA_11_HOME>
+        <JAVA_1_8_HOME>${JAVA_HOME}</JAVA_1_8_HOME>
+        <JAVA_11_HOME>${JAVA_HOME}</JAVA_11_HOME>
         
         <java.version>11</java.version>
         <java.compile.target.version>${java.version}</java.compile.target.version>
