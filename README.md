@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/anr-ru/config.java.svg?branch=master)](https://travis-ci.org/anr-ru/config.java)
+[![Build Status](https://travis-ci.com/anr-ru/config.java.svg?branch=2.x)](https://travis-ci.com/anr-ru/config.java)
 
 ## Part Of [Base.Platform Project](https://github.com/anr-ru/base.platform.parent)
 
@@ -13,7 +13,7 @@ You can use this artifact **ru.anr:config.java** as the maven parent for your ow
     <parent>    
         <groupId>ru.anr</groupId>
         <artifactId>config.java</artifactId>
-        <version>0.9-SNAPSHOT</version>
+        <version>2.0.0</version>
     </parent>
 ```
 
