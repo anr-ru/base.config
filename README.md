@@ -7,11 +7,11 @@
 Here are provided some maven configurations which can simplify creating Java projects from scratch.
 It contains base settings for most popular plugins and dependencies.
 
-You can use this artifact **ru.anr:config.java** as the maven parent for your own projects, like this:
+You can use this artifact **org.anrruf:config.java** as the maven parent for your own projects, like this:
 
 ```xml
     <parent>    
-        <groupId>ru.anr</groupId>
+        <groupId>org.anrruf</groupId>
         <artifactId>config.java</artifactId>
         <version>2.0.0</version>
     </parent>
