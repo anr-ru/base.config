@@ -18,10 +18,9 @@ before_install:
 
 script: "mvn -P ci install"
 
-deploy:
+do_deploy:
   provider: script
-  script: "mvn -P ci deploy -DskipTests  -s $HOME/.m2/settings.xml"
-  skip_cleanup: false
+  script: "mvn -P ci deploy -DskipTests"
   on:
     tags: true
     branch: master
