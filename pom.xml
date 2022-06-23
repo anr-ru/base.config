@@ -1145,8 +1145,8 @@
                 <version>${commons-validator.version}</version>
             </dependency>        
             <dependency>
-                <groupId>jakarta.validation</groupId>
-                <artifactId>jakarta.validation-api</artifactId>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
                 <version>${javax.validation}</version>
             </dependency>
             <dependency>
@@ -1530,7 +1530,7 @@
         <!-- Hibernate/EhCache -->
         <hibernate.version>5.6.9.Final</hibernate.version>
         <hibernate-tools.version>5.6.2.Final</hibernate-tools.version>
-        <hibernate-validator.version>7.0.4.Final</hibernate-validator.version>
+        <hibernate-validator.version>6.2.3.Final</hibernate-validator.version>
         <!-- TODO: ehcache replication must be revised -->
         <ehcache.jmsreplication.version>0.5</ehcache.jmsreplication.version>
 
@@ -1583,9 +1583,9 @@
         <node.version>v14.17.5</node.version>
         <npm.version>6.14.14</npm.version>
 
-        <javax.validation>3.0.2</javax.validation>
+        <javax.validation>2.0.1.Final</javax.validation>
         <javax.el-api.version>3.0.0</javax.el-api.version>
-        <glassfish.javax.el.version>4.0.2</glassfish.javax.el.version>
+        <glassfish.javax.el.version>3.0.4</glassfish.javax.el.version>
 
         <!-- Good utils -->
         <jsonrpc4j.version>1.6</jsonrpc4j.version>
