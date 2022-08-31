@@ -18,7 +18,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.anrruf</groupId>
-    <artifactId>config.java</artifactId>
+    <artifactId>base.config</artifactId>
     <packaging>pom</packaging>
     <name>Base Maven Configuration and Dependencies</name>
     <description>
@@ -40,19 +40,19 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:ssh://@github.com/anr-ru/config.java.git</connection>
-        <url>https://github.com/anr-ru/config.java/</url>
+        <connection>scm:git:ssh://@github.com/anr-ru/base.config.git</connection>
+        <url>https://github.com/anr-ru/base.config/</url>
         <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
       <repository>
-        <id>packagecloud-travis</id>
-        <url>packagecloud+https://packagecloud.io/ruanr/baseplatform</url>
+        <id>gitlab</id>
+        <url>https://gitlab.com/api/v4/projects/39021055/packages/maven</url>
       </repository>
       <snapshotRepository>
-        <id>packagecloud-travis</id>
-        <url>packagecloud+https://packagecloud.io/ruanr/baseplatform</url>
+        <id>gitlab</id>
+        <url>https://gitlab.com/api/v4/projects/39021055/packages/maven</url>
       </snapshotRepository>
     </distributionManagement>
 

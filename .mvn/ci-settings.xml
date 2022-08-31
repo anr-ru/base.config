@@ -4,8 +4,8 @@
                       Http://Maven.Apache.Org/Xsd/Settings-1.0.0.Xsd">
     <servers>
         <server>
-          <id>packagecloud-travis</id>
-          <password>${env.PACKAGECLOUD_TOKEN}</password>
+          <id>gitlab</id>
+          <password>${env.GITLAB_DEPLOY_TOKEN}</password>
         </server>
     </servers>
 </settings>
