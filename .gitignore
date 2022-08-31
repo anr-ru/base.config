@@ -3,5 +3,4 @@
 .pmd
 .project
 /.idea/
-config.java.iml
-
+*.iml
