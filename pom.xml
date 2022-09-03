@@ -13,7 +13,8 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.anr</groupId>
@@ -22,7 +23,7 @@
     <name>Base Maven Configuration and Dependencies</name>
     <version>1.0.0-SNAPSHOT</version>
 
-    <url />
+    <url/>
     <prerequisites>
         <maven>3.0.4</maven>
     </prerequisites>
@@ -41,18 +42,18 @@
     </scm>
 
     <distributionManagement>
-      <repository>
-        <id>packagecloud-travis</id>
-        <url>
-          packagecloud+https://packagecloud.io/ruanr/baseplatform
-        </url>
-      </repository>
-      <snapshotRepository>
-        <id>packagecloud-travis</id>
-        <url>
-          packagecloud+https://packagecloud.io/ruanr/baseplatform
-        </url>
-      </snapshotRepository>
+        <repository>
+            <id>packagecloud-travis</id>
+            <url>
+                packagecloud+https://packagecloud.io/ruanr/baseplatform
+            </url>
+        </repository>
+        <snapshotRepository>
+            <id>packagecloud-travis</id>
+            <url>
+                packagecloud+https://packagecloud.io/ruanr/baseplatform
+            </url>
+        </snapshotRepository>
     </distributionManagement>
 
     <developers>
@@ -529,20 +530,20 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>dbunit-maven-plugin</artifactId>
                     <version>${dbunit-maven-plugin.version}</version>
-	                <configuration>
-	                    <dataTypeFactoryName>org.dbunit.ext.postgresql.PostgresqlDataTypeFactory</dataTypeFactoryName>
-	                    <driver>org.postgresql.Driver</driver>
-	                    <format>flat</format>
-	                    <type>REFRESH</type>
+                    <configuration>
+                        <dataTypeFactoryName>org.dbunit.ext.postgresql.PostgresqlDataTypeFactory</dataTypeFactoryName>
+                        <driver>org.postgresql.Driver</driver>
+                        <format>flat</format>
+                        <type>REFRESH</type>
                         <skip>${maven.test.skip}</skip>
-	                </configuration>
-	                <dependencies>
-	                    <dependency>
-	                        <groupId>org.postgresql</groupId>
-	                        <artifactId>postgresql</artifactId>
-	                        <version>${postgresql.version}</version>
-	                    </dependency>
-	                </dependencies>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.postgresql</groupId>
+                            <artifactId>postgresql</artifactId>
+                            <version>${postgresql.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -555,10 +556,10 @@
                     <version>${sonar-maven-plugin.version}</version>
                 </plugin>
                 <plugin>
-			        <groupId>org.sonarsource.scanner.maven</groupId>
-			        <artifactId>sonar-maven-plugin</artifactId>
-			        <version>${sonar.scanner.version}</version>
-                </plugin>                
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${sonar.scanner.version}</version>
+                </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
@@ -654,7 +655,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -667,7 +668,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -680,7 +681,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -694,7 +695,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -736,7 +737,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -762,7 +763,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -814,9 +815,9 @@
                                         <artifactId>liquibase-maven-plugin</artifactId>
                                         <versionRange>[3.3.2,)</versionRange>
                                         <goals>
-				                            <goal>diff</goal>
-				                            <goal>updateSQL</goal>
-				                            <goal>update</goal>
+                                            <goal>diff</goal>
+                                            <goal>updateSQL</goal>
+                                            <goal>update</goal>
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
@@ -829,16 +830,16 @@
                                         <artifactId>sql-maven-plugin</artifactId>
                                         <versionRange>[1.5,)</versionRange>
                                         <goals>
-                                             <goal>execute</goal>
+                                            <goal>execute</goal>
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                         <ignore></ignore>
+                                        <ignore></ignore>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
                         </lifecycleMappingMetadata>
-                    </configuration>                    
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
@@ -846,41 +847,41 @@
                     <version>${spring.boot.version}</version>
                     <executions>
                         <execution>
-                          <goals>
-                            <goal>repackage</goal>
-                          </goals>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
                         </execution>
                     </executions>
-	                <dependencies>
-	                    <dependency>
-	                        <groupId>org.springframework</groupId>
-	                        <artifactId>springloaded</artifactId>
-	                        <version>${springloaded.version}</version>
-	                    </dependency>                
-	                </dependencies>                
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.springframework</groupId>
+                            <artifactId>springloaded</artifactId>
+                            <version>${springloaded.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
-	            <plugin>
-	              <groupId>de.juplo</groupId>
-	              <artifactId>hibernate4-maven-plugin</artifactId>
-	              <version>${hibernate4-maven-plugin}</version>
-	              <executions>
-	                <execution>
-	                  <id>export</id>
-	                  <phase>process-test-resources</phase>
-	                  <goals>
-	                    <goal>export</goal>
-	                  </goals>
-	                </execution>
-	              </executions>
-	              <configuration>
-	                <driverClassName>org.postgresql.Driver</driverClassName>
-	                <hibernateDialect>org.hibernate.dialect.PostgreSQL9Dialect</hibernateDialect>
-	                <!-- This may differ for dev/stage and preproduction -->
-	                <target>BOTH</target>
-	                <type>BOTH</type>
-                    <skip>${maven.test.skip}</skip>
-	              </configuration>
-	            </plugin>
+                <plugin>
+                    <groupId>de.juplo</groupId>
+                    <artifactId>hibernate4-maven-plugin</artifactId>
+                    <version>${hibernate4-maven-plugin}</version>
+                    <executions>
+                        <execution>
+                            <id>export</id>
+                            <phase>process-test-resources</phase>
+                            <goals>
+                                <goal>export</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <driverClassName>org.postgresql.Driver</driverClassName>
+                        <hibernateDialect>org.hibernate.dialect.PostgreSQL9Dialect</hibernateDialect>
+                        <!-- This may differ for dev/stage and preproduction -->
+                        <target>BOTH</target>
+                        <type>BOTH</type>
+                        <skip>${maven.test.skip}</skip>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.tomcat.maven</groupId>
                     <artifactId>tomcat7-maven-plugin</artifactId>
@@ -892,7 +893,7 @@
                         <backgroundProcessorDelay>2</backgroundProcessorDelay>
                         <contextReloadable>true</contextReloadable>
                     </configuration>
-                </plugin>                    
+                </plugin>
                 <plugin>
                     <groupId>com.github.eirslett</groupId>
                     <artifactId>frontend-maven-plugin</artifactId>
@@ -903,10 +904,10 @@
                         <outputdir>${project.build.directory}/classes/static</outputdir>
                         <installDirectory>${project.build.directory}</installDirectory>
                         <triggerfiles>
-                          <triggerfile>gruntFile.js</triggerfile>
-                          <triggerfile>package.json</triggerfile>
-                          <triggerfile>bower.json</triggerfile>
-                        </triggerfiles> 
+                            <triggerfile>gruntFile.js</triggerfile>
+                            <triggerfile>package.json</triggerfile>
+                            <triggerfile>bower.json</triggerfile>
+                        </triggerfiles>
                         <arguments>${target.environment}</arguments>
                     </configuration>
                     <executions>
@@ -917,8 +918,8 @@
                                 <goal>install-node-and-npm</goal>
                             </goals>
                             <configuration>
-    	                        <nodeVersion>${node.version}</nodeVersion>
-    	                        <npmVersion>${npm.version}</npmVersion>
+                                <nodeVersion>${node.version}</nodeVersion>
+                                <npmVersion>${npm.version}</npmVersion>
                             </configuration>
                         </execution>
                         <execution>
@@ -931,7 +932,7 @@
                                 <arguments>install</arguments>
                             </configuration>
                         </execution>
-                    </executions>                
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.liquibase</groupId>
@@ -958,20 +959,20 @@
                         <onError>continue</onError>
                         <skip>${maven.test.skip}</skip>
                     </configuration>
-                </plugin>                                                            
+                </plugin>
             </plugins>
         </pluginManagement>
         <extensions>
-           <extension>
-              <groupId>org.apache.maven.wagon</groupId>
-              <artifactId>wagon-webdav</artifactId>
-              <version>1.0-beta-2</version>
-           </extension>
-           <extension>
-              <groupId>io.packagecloud.maven.wagon</groupId>
-              <artifactId>maven-packagecloud-wagon</artifactId>
-              <version>0.0.6</version>
-           </extension>           
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-webdav</artifactId>
+                <version>1.0-beta-2</version>
+            </extension>
+            <extension>
+                <groupId>io.packagecloud.maven.wagon</groupId>
+                <artifactId>maven-packagecloud-wagon</artifactId>
+                <version>0.0.6</version>
+            </extension>
         </extensions>
     </build>
 
@@ -1060,14 +1061,14 @@
             <artifactId>mockito-core</artifactId>
         </dependency>
         <dependency>
-          <groupId>org.hamcrest</groupId>
-          <artifactId>hamcrest-core</artifactId>
-          <scope>test</scope>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
-          <groupId>org.hamcrest</groupId>
-          <artifactId>hamcrest-library</artifactId>
-          <scope>test</scope>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -1245,10 +1246,10 @@
                 <version>${spring.boot.version}</version>
             </dependency>
             <dependency>
-                 <groupId>org.springframework.shell</groupId>
-                 <artifactId>spring-shell</artifactId>
-                 <version>${spring.shell.version}</version>
-            </dependency>        
+                <groupId>org.springframework.shell</groupId>
+                <artifactId>spring-shell</artifactId>
+                <version>${spring.shell.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-autoconfigure</artifactId>
@@ -1269,48 +1270,48 @@
                 <artifactId>spring-aspects</artifactId>
                 <version>${spring.version}</version>
             </dependency>
-	        <dependency>
-	            <groupId>com.fasterxml.jackson.core</groupId>
-	            <artifactId>jackson-core</artifactId>
-	            <version>${jackson.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>com.fasterxml.jackson.core</groupId>
-	            <artifactId>jackson-databind</artifactId>
-	            <version>${jackson.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>com.fasterxml.jackson.module</groupId>
-	            <artifactId>jackson-module-jaxb-annotations</artifactId>
-	            <version>${jackson.version}</version>
-	        </dependency>
-	        <dependency>
-	          <groupId>com.fasterxml.jackson.dataformat</groupId>
-	          <artifactId>jackson-dataformat-xml</artifactId>
-	          <version>${jackson.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>com.fasterxml.jackson.datatype</groupId>
-	            <artifactId>jackson-datatype-jsr310</artifactId>
-	            <version>${jackson.version}</version>
-	        </dependency>
             <dependency>
-              <groupId>com.fasterxml.jackson.core</groupId>
-              <artifactId>jackson-annotations</artifactId>
-              <version>${jackson.version}</version>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-jaxb-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-xml</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.jaxrs</groupId>
                 <artifactId>jackson-jaxrs-json-provider</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
-	        <dependency>
-	            <groupId>org.codehaus.woodstox</groupId>
-	            <artifactId>woodstox-core-asl</artifactId>
-	            <version>${woodstox.version}</version>
-	        </dependency>
-            
-            
+            <dependency>
+                <groupId>org.codehaus.woodstox</groupId>
+                <artifactId>woodstox-core-asl</artifactId>
+                <version>${woodstox.version}</version>
+            </dependency>
+
+
             <!-- SPRING Security -->
             <dependency>
                 <groupId>org.springframework.security</groupId>
@@ -1398,7 +1399,7 @@
                 <artifactId>spring-social-linkedin</artifactId>
                 <version>${spring.social.linkedin.version}</version>
             </dependency>
-            
+
             <!-- TESTING -->
             <dependency>
                 <groupId>org.codehaus.sonar-plugins.java</groupId>
@@ -1465,8 +1466,8 @@
                 <version>${commons-compress.version}</version>
             </dependency>
             <dependency>
-            	<groupId>org.apache.commons</groupId>
-            	<artifactId>commons-lang3</artifactId>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang.version}</version>
             </dependency>
             <dependency>
@@ -1568,30 +1569,30 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-	        <dependency>
-	            <artifactId>hibernate-ehcache</artifactId>
-	            <groupId>org.hibernate</groupId>
-	            <version>${hibernate.version}</version>
-	        </dependency>        
+            <dependency>
+                <artifactId>hibernate-ehcache</artifactId>
+                <groupId>org.hibernate</groupId>
+                <version>${hibernate.version}</version>
+            </dependency>
             <dependency>
                 <groupId>commons-validator</groupId>
                 <artifactId>commons-validator</artifactId>
                 <version>${commons.validator.version}</version>
-            </dependency>        
+            </dependency>
             <dependency>
                 <groupId>javax.validation</groupId>
                 <artifactId>validation-api</artifactId>
                 <version>${javax.valication}</version>
-            </dependency>        
-            <dependency>
-               <groupId>javax.el</groupId>
-               <artifactId>javax.el-api</artifactId>
-               <version>${javax.el-api.version}</version>
             </dependency>
             <dependency>
-               <groupId>org.glassfish.web</groupId>
-               <artifactId>javax.el</artifactId>
-               <version>${javax.el.version}</version>
+                <groupId>javax.el</groupId>
+                <artifactId>javax.el-api</artifactId>
+                <version>${javax.el-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.web</groupId>
+                <artifactId>javax.el</artifactId>
+                <version>${javax.el.version}</version>
             </dependency>
 
             <!-- XML, JAXB -->
@@ -1605,8 +1606,8 @@
                 <artifactId>javax.json-api</artifactId>
                 <version>${jaxb.json.version}</version>
             </dependency>
-            
-            <!-- Others -->            
+
+            <!-- Others -->
             <dependency>
                 <groupId>joda-time</groupId>
                 <artifactId>joda-time</artifactId>
@@ -1746,7 +1747,7 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>jstl</artifactId>
                 <version>${jstl.version}</version>
-            </dependency>        
+            </dependency>
 
             <dependency>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -1759,7 +1760,7 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            
+
             <!-- Security libs -->
             <dependency>
                 <groupId>org.bouncycastle</groupId>
@@ -1776,7 +1777,7 @@
                 <artifactId>bcmail-jdk16</artifactId>
                 <version>${bouncycastle.version}</version>
             </dependency>
-            
+
             <!-- Web development -->
             <dependency>
                 <groupId>org.mozilla</groupId>
@@ -1874,12 +1875,12 @@
                 <version>${selenide.version}</version>
                 <scope>test</scope>
             </dependency>
-	        <dependency>
-	            <groupId>com.jamesmurty.utils</groupId>
-	            <artifactId>java-xmlbuilder</artifactId>
-	            <version>${java-xmlbuilder.version}</version>
-	        </dependency>
-            
+            <dependency>
+                <groupId>com.jamesmurty.utils</groupId>
+                <artifactId>java-xmlbuilder</artifactId>
+                <version>${java-xmlbuilder.version}</version>
+            </dependency>
+
             <!-- This uses Jasmine 2.0.0, but unable to parse angular sources -->
             <dependency>
                 <groupId>de.helwich.junit</groupId>
@@ -1907,14 +1908,14 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
             </dependency>
-            
+
             <!-- Working with Docker from Java -->
             <dependency>
-                  <groupId>com.github.docker-java</groupId>
-                  <artifactId>docker-java</artifactId>
-                  <version>${docker.java.version}</version>
-            </dependency>        
-            
+                <groupId>com.github.docker-java</groupId>
+                <artifactId>docker-java</artifactId>
+                <version>${docker.java.version}</version>
+            </dependency>
+
             <!-- jsonrpc4j -->
             <dependency>
                 <groupId>com.github.briandilley.jsonrpc4j</groupId>
@@ -1946,13 +1947,13 @@
                 <artifactId>stagemonitor-web</artifactId>
                 <version>${stagemonitor.version}</version>
             </dependency>
-			<dependency>
-			  <groupId>com.amazonaws</groupId>
-			  <artifactId>aws-java-sdk-bom</artifactId>
-			  <version>${amazon-sdk.version}</version>
-			  <type>pom</type>
-			  <scope>import</scope>
-			</dependency>
+            <dependency>
+                <groupId>com.amazonaws</groupId>
+                <artifactId>aws-java-sdk-bom</artifactId>
+                <version>${amazon-sdk.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -2060,11 +2061,11 @@
                 </pluginManagement>
             </build>
             <dependencies>
-		        <dependency>
-		            <groupId>org.codehaus.sonar-plugins.java</groupId>
-		            <artifactId>sonar-jacoco-listeners</artifactId>
-		            <scope>test</scope>
-		        </dependency>
+                <dependency>
+                    <groupId>org.codehaus.sonar-plugins.java</groupId>
+                    <artifactId>sonar-jacoco-listeners</artifactId>
+                    <scope>test</scope>
+                </dependency>
             </dependencies>
         </profile>
         <profile>
@@ -2072,22 +2073,22 @@
             <build>
                 <pluginManagement>
                     <plugins>
-	                    <plugin>
-	                        <groupId>org.apache.maven.plugins</groupId>
-	                        <artifactId>maven-compiler-plugin</artifactId>
-	                        <version>${maven-compiler-plugin.version}</version>
-	                        <configuration>
-	                            <verbose>false</verbose>
-	                            <fork>true</fork>
-	                            <compilerVersion>${java.compile.target.version}</compilerVersion>
-	                            <encoding>utf8</encoding>
-	                            <source>${java.compile.target.version}</source>
-	                            <target>${java.compile.target.version}</target>
-	                            <showDeprecation>true</showDeprecation>
-	                            <showWarnings>true</showWarnings>
-	                            <executable>${JAVA_HOME}/bin/javac</executable>
-	                        </configuration>
-	                    </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <version>${maven-compiler-plugin.version}</version>
+                            <configuration>
+                                <verbose>false</verbose>
+                                <fork>true</fork>
+                                <compilerVersion>${java.compile.target.version}</compilerVersion>
+                                <encoding>utf8</encoding>
+                                <source>${java.compile.target.version}</source>
+                                <target>${java.compile.target.version}</target>
+                                <showDeprecation>true</showDeprecation>
+                                <showWarnings>true</showWarnings>
+                                <executable>${JAVA_HOME}/bin/javac</executable>
+                            </configuration>
+                        </plugin>
                     </plugins>
                 </pluginManagement>
             </build>
@@ -2142,10 +2143,10 @@
         <hibernate-tools.version>4.3.1.CR1</hibernate-tools.version>
         <hibernate-annotations.version>3.5.6-Final</hibernate-annotations.version>
         <hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
-        <ehcache.version>2.8.2</ehcache.version>        
+        <ehcache.version>2.8.2</ehcache.version>
         <ehcache.jmsreplication.version>0.5</ehcache.jmsreplication.version>
         <ehcache.core.version>2.6.11</ehcache.core.version>
-        
+
         <spring.data.jpa.version>1.11.0.RELEASE</spring.data.jpa.version>
         <spring.data.commons.version>1.13.0.RELEASE</spring.data.commons.version>
         <springloaded.version>1.2.5.RELEASE</springloaded.version>
@@ -2166,7 +2167,7 @@
         <spring.social.facebook.version>1.1.1.RELEASE</spring.social.facebook.version>
         <spring.social.twitter.version>1.1.1.RELEASE</spring.social.twitter.version>
         <spring.social.linkedin.version>1.0.1.RELEASE</spring.social.linkedin.version>
-        
+
         <spring-security-oauth2.version>2.0.6.RELEASE</spring-security-oauth2.version>
         <spring.shell.version>1.1.0.RELEASE</spring.shell.version>
         <selenium.version>2.53.0</selenium.version>
@@ -2238,9 +2239,11 @@
         <jsoup.version>1.11.2</jsoup.version>
 
         <!-- Settings -->
+        <!--suppress UnresolvedMavenProperty -->
         <JAVA_HOME>${env.JAVA_HOME}</JAVA_HOME>
+        <!--suppress UnresolvedMavenProperty -->
         <JAVA_1_8_HOME>${env.JAVA_HOME}</JAVA_1_8_HOME>
-        
+
         <java.version>1.8</java.version>
         <java.compile.target.version>${java.version}</java.compile.target.version>
 
@@ -2259,7 +2262,7 @@
 
         <maven.log.std>${project.artifactId}.std</maven.log.std>
         <maven.log.err>${project.artifactId}.err</maven.log.err>
-        
+
     </properties>
 
 </project>
