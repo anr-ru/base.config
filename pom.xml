@@ -1,5 +1,5 @@
 <!-- 
- * Copyright 2014-2018 the original author or authors.
+ * Copyright 2014-2022 the original author or authors.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -36,23 +36,19 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:ssh://@github.com/anr-ru/config.java.git</connection>
-        <url>https://github.com/anr-ru/config.java/</url>
+        <connection>scm:git:ssh://@github.com/anr-ru/base.config.git</connection>
+        <url>https://github.com/anr-ru/base.config/</url>
         <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
         <repository>
-            <id>packagecloud-travis</id>
-            <url>
-                packagecloud+https://packagecloud.io/ruanr/baseplatform
-            </url>
+            <id>gitlab</id>
+            <url>https://gitlab.com/api/v4/projects/39021055/packages/maven</url>
         </repository>
         <snapshotRepository>
-            <id>packagecloud-travis</id>
-            <url>
-                packagecloud+https://packagecloud.io/ruanr/baseplatform
-            </url>
+            <id>gitlab</id>
+            <url>https://gitlab.com/api/v4/projects/39021055/packages/maven</url>
         </snapshotRepository>
     </distributionManagement>
 
