@@ -1044,8 +1044,8 @@
             </dependency>
             <!-- TODO: check needs? -->
             <dependency>
-                <groupId>jakarta.validation</groupId>
-                <artifactId>jakarta.validation-api</artifactId>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
                 <version>${javax.validation}</version>
             </dependency>
             <dependency>
@@ -1201,8 +1201,8 @@
             </dependency>
             <!-- Apache Http Transport -->
             <dependency>
-                <groupId>org.apache.httpcomponents.client5</groupId>
-                <artifactId>httpclient5</artifactId>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
                 <version>${httpclient.version}</version>
                 <exclusions>
                     <exclusion>
@@ -1360,7 +1360,7 @@
         <commons-lang.version>3.13.0</commons-lang.version>
         <commons-fileupload.version>1.5</commons-fileupload.version>
         <commons-validator.version>1.7</commons-validator.version>
-        <commons-codec.version>1.16.1</commons-codec.version>
+        <commons-codec.version>1.16.0</commons-codec.version>
 
         <!-- Spring -->
         <spring.version>5.3.29</spring.version>
@@ -1385,9 +1385,9 @@
         <javax.ejb.version>3.2.2</javax.ejb.version>
         <jaxb-core.version>4.0.3</jaxb-core.version>
         <jaxb-impl.version>4.0.3</jaxb-impl.version>
-        <javax.validation>3.0.2</javax.validation>
+        <javax.validation>2.0.1.Final</javax.validation>
         <javax.el-api.version>3.0.0</javax.el-api.version>
-        <glassfish.javax.el.version>4.0.2</glassfish.javax.el.version>
+        <glassfish.javax.el.version>3.0.4</glassfish.javax.el.version>
 
         <!-- Databases -->
         <dbunit.version>2.7.3</dbunit.version>
@@ -1401,7 +1401,7 @@
         <!-- TODO: ehcache replication must be revised -->
         <ehcache.jmsreplication.version>0.5</ehcache.jmsreplication.version>
 
-        <httpclient.version>5.2.1</httpclient.version>
+        <httpclient.version>4.5.14</httpclient.version>
         <bouncycastle.version>1.75</bouncycastle.version>
         <javassist.version>3.29.2-GA</javassist.version>
         <google.guava.version>31.1.1-jre</google.guava.version>
