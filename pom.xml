@@ -1,5 +1,5 @@
 <!-- 
- * Copyright 2014-2022 the original author or authors.
+ * Copyright 2014-2023 the original author or authors.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -22,14 +22,15 @@
     <packaging>pom</packaging>
     <name>Base Maven Configuration and Dependencies</name>
     <description>
-        The idea of this configuration is to provide some set of predefined libraries, plugins and their
-        settings in order to simplify the configuring process for particular apps.
+        The idea of this configuration is to provide some set of predefined libraries,
+        plugins and their settings in order to simplify the configuring process
+        for particular apps.
     </description>
-    <version>2.0.0-SNAPSHOT</version>
+    <version>2.5.0-SNAPSHOT</version>
 
     <url />
     <prerequisites>
-        <maven>3.6.3</maven>
+        <maven>3.9.3</maven>
     </prerequisites>
 
     <licenses>
@@ -110,34 +111,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <!-- Extract and store the environment details -->
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-help-plugin</artifactId>
-                <version>${maven-help-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>help-active-profiles</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>active-profiles</goal>
-                        </goals>
-                        <configuration>
-                            <output>${project.build.testOutputDirectory}/maven.active.profiles.txt</output>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>help-system</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>system</goal>
-                        </goals>
-                        <configuration>
-                            <output>${project.build.testOutputDirectory}/maven.environment.txt</output>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
         <!-- General resource processing -->
         <resources>
@@ -176,9 +149,11 @@
                     <include>**/*.css</include>
                     <include>**/*.min</include>
                     <include>**/*.js</include>
+                    <include>**/*.ts</include>
                     <include>**/*.html</include>
                     <include>**/*.jsp</include>
                     <include>**/*.pdf</include>
+                    <include>**/*.dat</include>
                 </includes>
             </resource>
             <resource>
@@ -198,11 +173,13 @@
                     <exclude>**/*.css</exclude>
                     <exclude>**/*.min</exclude>
                     <exclude>**/*.js</exclude>
+                    <exclude>**/*.ts</exclude>
                     <exclude>**/*.woff2</exclude>
                     <exclude>**/*.otf</exclude>
                     <exclude>**/*.html</exclude>
                     <exclude>**/*.jsp</exclude>
                     <exclude>**/*.pdf</exclude>
+                    <exclude>**/*.dat</exclude>
                 </excludes>
             </resource>
             <resource>
@@ -230,6 +207,7 @@
                 <includes>
                     <include>**/*-context.xml</include>
                     <include>**/*.bin</include>
+                    <include>**/*.dat</include>
                     <include>**/*.pdf</include>
                 </includes>
             </testResource>
@@ -242,6 +220,7 @@
                 <excludes>
                     <exclude>**/*-context.xml</exclude>
                     <exclude>**/*.bin</exclude>
+                    <exclude>**/*.dat</exclude>
                     <exclude>**/*.pdf</exclude>
                 </excludes>
             </testResource>
@@ -309,7 +288,6 @@
                     <configuration>
                         <version>7</version>
                         <defaultLibBundleDir>/lib</defaultLibBundleDir>
-                        <encoding>UTF-8</encoding>
                         <archive>
                             <manifest>
                                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
@@ -408,7 +386,7 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
                     <configuration>
-                        <argLine>-Xss1m -Xmx8g -Djava.awt.headless=true</argLine>
+                        <argLine>-Xss1m -Djava.awt.headless=true</argLine>
                         <excludes>
                             <exclude>**/*IntegrationTest.java</exclude>
                         </excludes>
@@ -449,33 +427,11 @@
                     <artifactId>maven-dependency-plugin</artifactId>
                     <version>${maven-dependency-plugin.version}</version>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>${maven-release-plugin.version}</version>
-                </plugin>
-                <!-- DBUnit is a plugin for loading some initial data to the database -->
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>dbunit-maven-plugin</artifactId>
-                    <version>${dbunit-maven-plugin.version}</version>
-	                <configuration>
-	                    <format>flat</format>
-	                    <type>REFRESH</type>
-                        <skip>${skipTests}</skip>
-	                </configuration>
-	                <dependencies>
-                        <dependency>
-                            <groupId>org.dbunit</groupId>
-                            <artifactId>dbunit</artifactId>
-                            <version>${dbunit.version}</version>
-                        </dependency>
-	                </dependencies>
-                </plugin>
+                <!-- DBUnit is a plugin for loading some initial data to the database. -->
                 <plugin>
                     <groupId>org.dbunit</groupId>
                     <artifactId>dbunit-maven-plugin</artifactId>
-                    <version>${dbunitx-maven-plugin.version}</version>
+                    <version>${dbunit-maven-plugin.version}</version>
                     <configuration>
                         <format>flat</format>
                         <type>REFRESH</type>
@@ -489,11 +445,6 @@
                         </dependency>
                     </dependencies>
                 </plugin>
-                <plugin>
-			        <groupId>org.sonarsource.scanner.maven</groupId>
-			        <artifactId>sonar-maven-plugin</artifactId>
-			        <version>${sonar.scanner.version}</version>
-                </plugin>                
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
@@ -517,28 +468,6 @@
                     </executions>
                 </plugin>
                 <!-- Schema generators for Hibernate -->
-	            <plugin>
-	              <groupId>de.juplo</groupId>
-	              <artifactId>hibernate-maven-plugin</artifactId>
-	              <version>${hibernate-maven-plugin}</version>
-	              <executions>
-	                <execution>
-	                  <id>export</id>
-	                  <phase>process-test-resources</phase>
-	                  <goals>
-	                    <goal>export</goal>
-	                  </goals>
-	                </execution>
-	              </executions>
-	              <configuration>
-	                <driverClassName>org.postgresql.Driver</driverClassName>
-	                <hibernateDialect>org.hibernate.dialect.PostgreSQL9Dialect</hibernateDialect>
-	                <!-- This may differ for dev/stage and preproduction -->
-	                <target>BOTH</target>
-	                <type>BOTH</type>
-                    <skip>${skipTests}</skip>
-	              </configuration>
-	            </plugin>
                 <plugin>
                     <groupId>de.jpdigital</groupId>
                     <artifactId>hibernate56-ddl-maven-plugin</artifactId>
@@ -563,7 +492,6 @@
                         <outputdir>${project.build.directory}/classes/static</outputdir>
                         <installDirectory>${project.build.directory}</installDirectory>
                         <triggerfiles>
-                          <triggerfile>gruntFile.js</triggerfile>
                           <triggerfile>package.json</triggerfile>
                         </triggerfiles>
                         <arguments>${target.environment}</arguments>
@@ -622,14 +550,6 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>${maven-project-info-reports-plugin.version}</version>
-                <configuration>
-                    <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven-javadoc-plugin.version}</version>
                 <reportSets>
@@ -657,6 +577,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin.version}</version>
             </plugin>
         </plugins>
     </reporting>
@@ -669,10 +590,6 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-        </dependency>
-        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
         </dependency>
@@ -681,6 +598,12 @@
             <artifactId>logback-classic</artifactId>
         </dependency>
         <dependency>
+            <!-- A bridge to Java Common Logging -->
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <!-- A bridge to Java Util Logging -->
             <groupId>org.slf4j</groupId>
             <artifactId>jul-to-slf4j</artifactId>
         </dependency>
@@ -1008,12 +931,6 @@
 
             <!-- TESTING -->
             <dependency>
-                <groupId>org.sonarsource.java</groupId>
-                <artifactId>sonar-jacoco-listeners</artifactId>
-                <version>${sonar-jacoco-plugins.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter</artifactId>
                 <version>${junit.version}</version>
@@ -1031,17 +948,6 @@
             </dependency>
 
             <!-- COMMONS projects -->
-            <dependency>
-                <groupId>commons-beanutils</groupId>
-                <artifactId>commons-beanutils</artifactId>
-                <version>${commons-beanutils.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-compress</artifactId>
@@ -1061,11 +967,6 @@
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>${commons-io.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-dbcp2</artifactId>
-                <version>${commons-dbcp.version}</version>
             </dependency>
             <dependency>
                 <groupId>commons-fileupload</groupId>
@@ -1140,10 +1041,11 @@
                 <groupId>commons-validator</groupId>
                 <artifactId>commons-validator</artifactId>
                 <version>${commons-validator.version}</version>
-            </dependency>        
+            </dependency>
+            <!-- TODO: check needs? -->
             <dependency>
-                <groupId>javax.validation</groupId>
-                <artifactId>validation-api</artifactId>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
                 <version>${javax.validation}</version>
             </dependency>
             <dependency>
@@ -1269,8 +1171,8 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
+                <groupId>jakarta.servlet</groupId>
+                <artifactId>jakarta.servlet-api</artifactId>
                 <version>${servlet.version}</version>
                 <scope>provided</scope>
             </dependency>
@@ -1299,8 +1201,8 @@
             </dependency>
             <!-- Apache Http Transport -->
             <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
+                <groupId>org.apache.httpcomponents.client5</groupId>
+                <artifactId>httpclient5</artifactId>
                 <version>${httpclient.version}</version>
                 <exclusions>
                     <exclusion>
@@ -1353,13 +1255,7 @@
                 <version>${hsqldb.version}</version>
                 <scope>test</scope>
             </dependency>
-            <!-- MySQL -->
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.version}</version>
-            </dependency>
-            
+
             <!-- Working with Docker from Java -->
             <dependency>
                 <groupId>com.github.docker-java</groupId>
@@ -1402,35 +1298,9 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>buildnumber-maven-plugin</artifactId>
-                        <version>${buildnumber-maven-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>create</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <!-- Define a special version number pattern -->
-                            <format>${env.USER}-local</format>
-                            <items>
-                                <item>timestamp</item>
-                            </items>
-                            <doCheck>false</doCheck>
-                            <doUpdate>false</doUpdate>
-                            <revisionOnScmFailure>no-scm</revisionOnScmFailure>
-                            <shortRevisionLength>6</shortRevisionLength>
-                            <getRevisionOnlyOnce>true</getRevisionOnlyOnce>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
+            <properties>
+                <buildNumber>${env.USER}-local</buildNumber>
+            </properties>
         </profile>
         <!-- A profile for the CI environment -->
         <profile>
@@ -1473,142 +1343,121 @@
         <skipTests>false</skipTests>
 
         <!-- Logging -->
-        <slf4j.version>1.7.36</slf4j.version>
-        <logback.version>1.2.11</logback.version>
-        <jul-to-slf4j.version>1.7.36</jul-to-slf4j.version>
+        <slf4j.version>2.0.7</slf4j.version>
+        <logback.version>1.4.8</logback.version>
+        <jul-to-slf4j.version>2.0.7</jul-to-slf4j.version>
 
         <!-- Testing -->
-        <junit.version>5.8.2</junit.version>
+        <junit.version>5.10.0</junit.version>
         <hamcrest.version>2.2</hamcrest.version>
-        <selenide.version>6.6.3</selenide.version>
-        <selenium.version>4.2.2</selenium.version>
+        <selenide.version>6.16.1</selenide.version>
+        <selenium.version>4.10.0</selenium.version>
 
         <!-- Apache Commons -->
-        <commons-beanutils.version>1.9.4</commons-beanutils.version>
-        <commons-compress.version>1.21</commons-compress.version>
+        <commons-compress.version>1.23.0</commons-compress.version>
         <commons-collections.version>4.4</commons-collections.version>
-        <commons-io.version>2.11.0</commons-io.version>
-        <commons-dbcp.version>2.9.0</commons-dbcp.version>
-        <commons-lang.version>3.12.0</commons-lang.version>
-        <commons-fileupload.version>1.4</commons-fileupload.version>
+        <commons-io.version>2.13.0</commons-io.version>
+        <commons-lang.version>3.13.0</commons-lang.version>
+        <commons-fileupload.version>1.5</commons-fileupload.version>
         <commons-validator.version>1.7</commons-validator.version>
-        <commons-codec.version>1.15</commons-codec.version>
+        <commons-codec.version>1.16.1</commons-codec.version>
 
         <!-- Spring -->
-        <spring.version>5.3.21</spring.version>
-        <spring-security.version>5.7.1</spring-security.version>
+        <spring.version>5.3.29</spring.version>
+        <spring-security.version>5.7.10</spring-security.version>
         <spring-security-oauth2.version>2.5.2.RELEASE</spring-security-oauth2.version>
-        <spring-data-jpa.version>2.7.1</spring-data-jpa.version>
-        <spring-data-commons.version>2.7.1</spring-data-commons.version>
-        <spring-ws.version>3.1.3</spring-ws.version>
-        <spring-boot.version>2.7.1</spring-boot.version>
-        <spring.shell.version>2.0.1.RELEASE</spring.shell.version>
+        <spring-data-jpa.version>2.7.14</spring-data-jpa.version>
+        <spring-data-commons.version>2.7.14</spring-data-commons.version>
+        <spring-ws.version>3.1.16</spring-ws.version>
+        <spring-boot.version>2.7.14</spring-boot.version>
+        <spring.shell.version>2.1.12</spring.shell.version>
 
         <!-- JEE -->
-        <aspects.version>1.9.9.1</aspects.version>
+        <aspects.version>1.9.19</aspects.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
-        <jaxb.json.version>2.1.0</jaxb.json.version>
+        <jaxb.json.version>2.1.2</jaxb.json.version>
         <jsr250-api.version>1.3.2</jsr250-api.version>
-        <servlet.version>4.0.1</servlet.version>
+        <servlet.version>6.0.0</servlet.version>
         <javaee-api.version>8.0.1</javaee-api.version>
-        <payara.version>5.2022.2</payara.version>
+        <payara.version>5.2022.5</payara.version>
         <jms.version>2.0.1</jms.version>
-        <javax.mail.version>2.1.0</javax.mail.version>
+        <javax.mail.version>2.1.2</javax.mail.version>
         <javax.ejb.version>3.2.2</javax.ejb.version>
-        <jaxb-core.version>4.0.0</jaxb-core.version>
-        <jaxb-impl.version>4.0.0</jaxb-impl.version>
+        <jaxb-core.version>4.0.3</jaxb-core.version>
+        <jaxb-impl.version>4.0.3</jaxb-impl.version>
+        <javax.validation>3.0.2</javax.validation>
+        <javax.el-api.version>3.0.0</javax.el-api.version>
+        <glassfish.javax.el.version>4.0.2</glassfish.javax.el.version>
 
         <!-- Databases -->
         <dbunit.version>2.7.3</dbunit.version>
-        <postgresql.version>42.4.0</postgresql.version>
-        <hsqldb.version>2.6.1</hsqldb.version>
-        <mysql.version>8.0.29</mysql.version>
+        <postgresql.version>42.6.0</postgresql.version>
+        <hsqldb.version>2.7.2</hsqldb.version>
 
         <!-- Hibernate/EhCache -->
-        <hibernate.version>5.6.9.Final</hibernate.version>
-        <hibernate-tools.version>5.6.2.Final</hibernate-tools.version>
-        <hibernate-validator.version>6.2.3.Final</hibernate-validator.version>
+        <hibernate.version>5.6.15.Final</hibernate.version>
+        <hibernate-tools.version>5.6.15.Final</hibernate-tools.version>
+        <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>
         <!-- TODO: ehcache replication must be revised -->
         <ehcache.jmsreplication.version>0.5</ehcache.jmsreplication.version>
 
-        <httpclient.version>4.5.13</httpclient.version>
-        <bouncycastle.version>1.71</bouncycastle.version>
-        <javassist.version>3.29.0-GA</javassist.version>
-        <google.guava.version>31.1-jre</google.guava.version>
-        <jackson.version>2.13.3</jackson.version>
-        <jackson.databind.version>2.13.3</jackson.databind.version>
+        <httpclient.version>5.2.1</httpclient.version>
+        <bouncycastle.version>1.75</bouncycastle.version>
+        <javassist.version>3.29.2-GA</javassist.version>
+        <google.guava.version>31.1.1-jre</google.guava.version>
+        <jackson.version>2.15.2</jackson.version>
+        <jackson.databind.version>2.15.2</jackson.databind.version>
 
         <!-- Local Connection Pool (for tests mostly) -->
         <c3p0.version>0.9.5.5</c3p0.version>
 
         <!-- Maven Plugins -->
-        <maven-javadoc-plugin.version>3.4.0</maven-javadoc-plugin.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
-        <maven-dependency-plugin.version>3.3.0</maven-dependency-plugin.version>
-        <maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
-        <maven-help-plugin.version>3.2.0</maven-help-plugin.version>
-        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-        <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+        <maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
+        <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
+        <maven-failsafe-plugin.version>3.1.2</maven-failsafe-plugin.version>
+        <maven-surefire-report-plugin.version>3.1.2</maven-surefire-report-plugin.version>
+        <maven-dependency-plugin.version>3.6.0</maven-dependency-plugin.version>
+        <maven-clean-plugin.version>3.3.1</maven-clean-plugin.version>
+        <maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
+        <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
+        <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
         <maven-ejb-plugin.version>3.2.1</maven-ejb-plugin.version>
-        <maven-ear-plugin.version>3.2.0</maven-ear-plugin.version>
-        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
-        <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
-        <dbunit-maven-plugin.version>1.0-beta-3</dbunit-maven-plugin.version>
-        <dbunitx-maven-plugin.version>1.2.0</dbunitx-maven-plugin.version>
-        <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
-        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+        <maven-ear-plugin.version>3.3.0</maven-ear-plugin.version>
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
+        <dbunit-maven-plugin.version>1.2.0</dbunit-maven-plugin.version>
+        <exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
+        <maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
         <sql-maven-plugin.version>1.5</sql-maven-plugin.version>
         <hibernate56-ddl-maven-plugin.version>2.5.0</hibernate56-ddl-maven-plugin.version>
-        <maven-project-info-reports-plugin.version>3.3.0</maven-project-info-reports-plugin.version>
-        <hibernate-maven-plugin>2.1.1</hibernate-maven-plugin>
-        <frontend-maven-plugin.version>1.12.1</frontend-maven-plugin.version>
-        <liquibase-maven-plugin.version>4.12.0</liquibase-maven-plugin.version>
-        <liquibase-hibernate5.version>4.11.0</liquibase-hibernate5.version>
-        <maven-surefire-report-plugin.version>2.22.2</maven-surefire-report-plugin.version>
-        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
-
-        <!-- TODO: Do we really need them?  -->
-        <buildnumber-maven-plugin.version>1.4</buildnumber-maven-plugin.version>
-        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-
-        <!-- Sonar -->
-        <sonar-jacoco-plugins.version>5.14.0.18788</sonar-jacoco-plugins.version>
-        <sonar.scanner.version>3.9.1.2184</sonar.scanner.version>
+        <frontend-maven-plugin.version>1.13.4</frontend-maven-plugin.version>
+        <liquibase-maven-plugin.version>4.23.0</liquibase-maven-plugin.version>
+        <liquibase-hibernate5.version>4.22.0</liquibase-hibernate5.version>
+        <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
 
         <node.version>v14.17.5</node.version>
         <npm.version>6.14.14</npm.version>
 
-        <javax.validation>2.0.1.Final</javax.validation>
-        <javax.el-api.version>3.0.0</javax.el-api.version>
-        <glassfish.javax.el.version>3.0.4</glassfish.javax.el.version>
-
         <!-- Good utils -->
         <jsonrpc4j.version>1.6</jsonrpc4j.version>
-        <docker-java.version>3.2.13</docker-java.version>
-        <zip4j.version>2.10.0</zip4j.version>
-        <mockito.version>4.6.1</mockito.version>
+        <docker-java.version>3.3.2</docker-java.version>
+        <zip4j.version>2.11.5</zip4j.version>
+        <mockito.version>5.4.0</mockito.version>
         <exp4j.version>0.4.8</exp4j.version>
         <java-xmlbuilder.version>1.3</java-xmlbuilder.version>
         <jjwt.version>0.11.5</jjwt.version>
-        <libphonenumber.version>8.12.50</libphonenumber.version>
-        <jsoup.version>1.15.1</jsoup.version>
+        <libphonenumber.version>8.13.17</libphonenumber.version>
+        <jsoup.version>1.16.1</jsoup.version>
 
         <!-- Settings -->
         <!--suppress UnresolvedMavenProperty -->
         <JAVA_HOME>${env.JAVA_HOME}</JAVA_HOME>
-        <JAVA_1_8_HOME>${JAVA_HOME}</JAVA_1_8_HOME>
-        <JAVA_11_HOME>${JAVA_HOME}</JAVA_11_HOME>
 
         <!-- The default JDK -->
         <java.version>11</java.version>
         <java.compile.target.version>${java.version}</java.compile.target.version>
 
         <target.environment>dev</target.environment>
-
-        <!-- SONAR/JaCoCo configs -->
-        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 
         <web.port>8080</web.port>
         <web.host>localhost</web.host>
