@@ -1404,7 +1404,7 @@
         <httpclient.version>4.5.14</httpclient.version>
         <bouncycastle.version>1.75</bouncycastle.version>
         <javassist.version>3.29.2-GA</javassist.version>
-        <google.guava.version>31.1.1-jre</google.guava.version>
+        <google.guava.version>32.1.1-jre</google.guava.version>
         <jackson.version>2.15.2</jackson.version>
         <jackson.databind.version>2.15.2</jackson.databind.version>
 
