@@ -5,17 +5,18 @@
 ### Base.Config
 
 Here are provided some Maven configuration which can simplify creating Java projects 
-from scratch. It contains base settings for most popular plugins and dependencies. 
-Also, with the use of this configuration it's easy  to manage versions of artifacts - 
-all you need is just to override the required version property in your pom.xml.
+from scratch. It contains base settings for the most popular plugins and dependencies. 
+Also, with the use of this configuration, it's easy to manage versions of frequently used
+artifacts— all you need is just to override the required version property in your pom.xml.
 
-You can use this artifact **org.anrruf:base.config** as the maven parent for your own projects, like this:
+You can use this artifact **org.anrruf:base.config** as the maven parent for your 
+own projects, like this:
 
 ```xml
     <parent>    
         <groupId>org.anrruf</groupId>
         <artifactId>base.config</artifactId>
-        <version>2.5.0</version>
+        <version>2.6.0</version>
     </parent>
 ```
 
