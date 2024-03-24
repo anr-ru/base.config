@@ -1,5 +1,5 @@
 <!-- 
- * Copyright 2014-2023 the original author or authors.
+ * Copyright 2014-2024 the original author or authors.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -990,28 +990,28 @@
         <skipTests>false</skipTests>
 
         <!-- Logging -->
-        <slf4j.version>2.0.7</slf4j.version>
-        <logback.version>1.4.8</logback.version>
-        <jul-to-slf4j.version>2.0.7</jul-to-slf4j.version>
+        <slf4j.version>2.0.12</slf4j.version>
+        <logback.version>1.4.14</logback.version>
+        <jul-to-slf4j.version>2.0.12</jul-to-slf4j.version>
 
         <!-- Testing -->
-        <junit.version>5.10.0</junit.version>
+        <junit.version>5.10.2</junit.version>
 
         <!-- Apache Commons -->
-        <commons-compress.version>1.23.0</commons-compress.version>
+        <commons-compress.version>1.26.1</commons-compress.version>
         <commons-collections.version>4.4</commons-collections.version>
-        <commons-io.version>2.13.0</commons-io.version>
-        <commons-lang.version>3.13.0</commons-lang.version>
+        <commons-io.version>2.15.1</commons-io.version>
+        <commons-lang.version>3.14.0</commons-lang.version>
         <commons-fileupload.version>1.5</commons-fileupload.version>
-        <commons-validator.version>1.7</commons-validator.version>
-        <commons-codec.version>1.16.0</commons-codec.version>
+        <commons-validator.version>1.8.0</commons-validator.version>
+        <commons-codec.version>1.16.1</commons-codec.version>
 
         <!-- Spring -->
-        <spring.version>5.3.29</spring.version>
-        <spring-security.version>5.7.10</spring-security.version>
+        <spring.version>5.3.33</spring.version>
+        <spring-security.version>5.7.12</spring-security.version>
         <spring-security-oauth2.version>2.5.2.RELEASE</spring-security-oauth2.version>
-        <spring-data-jpa.version>2.7.14</spring-data-jpa.version>
-        <spring-data-commons.version>2.7.14</spring-data-commons.version>
+        <spring-data-jpa.version>2.7.18</spring-data-jpa.version>
+        <spring-data-commons.version>2.7.18</spring-data-commons.version>
 
         <!-- Databases -->
         <dbunit.version>2.7.3</dbunit.version>
