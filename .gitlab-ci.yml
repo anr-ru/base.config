@@ -1,0 +1,25 @@
+stages:
+  - build
+
+before_script:
+  - if [ -n "$CI_COMMIT_TAG" ]; then
+    export VERSIONING_GIT_TAG=$CI_COMMIT_TAG;
+    else
+    export VERSIONING_GIT_BRANCH=$CI_COMMIT_REF_NAME;
+    fi
+  - "let BUILD_NUMBER=CI_PIPELINE_IID"
+  - "export BUILD_NUMBER"
+  - "echo 'Build: '$BUILD_NUMBER"
+  - "export SPRING_PROFILES_ACTIVE=ci"
+  - "export logbackDisableServletContainerInitializer=true"
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+
+################################################################################
+maven-build:
+  stage: build
+  script:
+    - "mvn -P ci clean deploy -Dversioning.disable -s ./.mvn/ci_settings.xml"
+  tags:
+    - common-ci
