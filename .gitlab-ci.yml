@@ -20,6 +20,7 @@ variables:
 maven-build:
   stage: build
   script:
-    - "mvn -P ci clean deploy -Dversioning.disable -s ./.mvn/ci_settings.xml"
+    - "cp ./.mvn/ci-settings.xml $HOME/.m2/settings.xml"
+    - "mvn -P ci clean deploy -Dversioning.disable"
   tags:
     - common-ci
